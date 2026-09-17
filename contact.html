@@ -3,144 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Kofi</title>
+    <title>Kofi | Contact</title>
 </head>
-
 <body>
-    <!-- Header contains the Kofi identity and links to every page. -->
-    <header>
-        <h1>Kofi</h1>
-        <p>Fresh coffee, brewed with love.</p>
 
-        <nav aria-label="Main navigation">
-            
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="menu.html">Menu</a> |
-    <a href="contact.html">Contact</a>
+<header>
+    <h1>Contact Kofi</h1>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a> |
+        <a href="about.html">About us</a> |
+        <a href="products.html">Products</a> |
+        <a href="enquiry.html">Enquiry</a> |
+        <a href="contact.html">Contact</a>
+    
+    </nav>
+</header>
 
-        </nav>
-    </header>
+<main>
+    <section>
+        <h2>Get in Touch</h2>
+        <p>We would love to hear from you.</p>
 
-    <hr>
+        <address>
+            <strong>Email:</strong> <a href="mailto:hello@kofi.example">hello@kofi.example</a><br>
+            <strong>Phone:</strong> <a href="tel:+27123456789">+27 12 345 6789</a><br>
+            <strong>Opening Hours:</strong> Monday–Sunday, 07:00–18:00
+        </address>
+    </section>
 
-    <main>
-        <section>
-            <h2>Contact Us</h2>
+    <section>
+        <h2>Our Locations</h2>
+
+        <article>
+            <h3>Kofi Main Store – Pretoria Central</h3>
+            <p>Pretoria Central, Gauteng, South Africa</p>
             <p>
-                Have a question about our menu, opening hours or coffee shop?
-                Get in touch with Kofi using the details below.
+                <a href="https://www.google.com/maps/search/?api=1&query=Pretoria+Central+Gauteng+South+Africa"
+                   target="_blank" rel="noopener">
+                    View location on Google Maps
+                </a>
             </p>
-        </section>
+        </article>
 
-        <hr>
-
-        <!-- Contact details are grouped using the semantic address element. -->
-        <section>
-            <h2>Our Contact Details</h2>
-            <address>
-                <p><strong>Address:</strong> 123 Main Street, Polokwane, Limpopo</p>
-                <p><strong>Phone:</strong> <a href="tel:0123456789">012 345 6789</a></p>
-                <p><strong>Email:</strong> <a href="mailto:hello@kofi.co.za">hello@kofi.co.za</a></p>
-            </address>
-
-            <p><strong>Opening Hours:</strong> Monday - Saturday, 7:00 AM - 6:00 PM</p>
-            <p>We are closed on Sundays.</p>
-        </section>
-
-        <hr>
-
-        <!-- This form collects basic customer contact information using HTML only. -->
-        <section>
-            <h2>Send Us a Message</h2>
-
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Customer Information</legend>
-
-                    <p>
-                        <label for="name">Full Name:</label><br>
-                        <input type="text" id="name" name="name" required>
-                    </p>
-
-                    <p>
-                        <label for="email">Email Address:</label><br>
-                        <input type="email" id="email" name="email" required>
-                    </p>
-
-                    <p>
-                        <label for="phone">Phone Number:</label><br>
-                        <input type="tel" id="phone" name="phone">
-                    </p>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Message</legend>
-
-                    <p>
-                        <label for="subject">Subject:</label><br>
-                        <select id="subject" name="subject">
-                            <option value="general">General Enquiry</option>
-                            <option value="menu">Menu Question</option>
-                            <option value="hours">Opening Hours</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </p>
-
-                    <p>
-                        <label for="message">Your Message:</label><br>
-                        <textarea id="message" name="message" rows="7" cols="50" required></textarea>
-                    </p>
-
-                    <p>
-                        <button type="submit">Send Message</button>
-                        <button type="reset">Clear Form</button>
-                    </p>
-                </fieldset>
-            </form>
-        </section>
-
-        <hr>
-
-        <section>
-            <h2>Find Kofi</h2>
+        <article>
+            <h3>Kofi City Branch – Hatfield</h3>
+            <p>Hatfield, Pretoria, Gauteng, South Africa</p>
             <p>
-                Kofi is located at 123 Main Street in Polokwane, Limpopo.
-                Customers can contact us before visiting if they need more
-                information about our location or services.
+                <a href="https://www.google.com/maps/search/?api=1&query=Hatfield+Pretoria+Gauteng+South+Africa"
+                   target="_blank" rel="noopener">
+                    View location on Google Maps
+                </a>
             </p>
-        </section>
+        </article>
+    </section>
 
-        <hr>
+    <section>
+        <h2>Contact Form</h2>
 
-        <section>
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="about.html">Learn more about Kofi</a></li>
-                <li><a href="menu.html">View the Kofi menu</a></li>
-            </ul>
-        </section>
-    </main>
+        <form id="contactForm">
+            <label for="contactName">Name:</label><br>
+            <input type="text" id="contactName" name="contactName" required><br><br>
 
-    <hr>
+            <label for="contactEmail">Email:</label><br>
+            <input type="email" id="contactEmail" name="contactEmail" required><br><br>
 
-    <!-- Footer keeps the website information consistent across all pages. -->
-    <footer>
-        <p>&copy; 2026 Kofi. All rights reserved.</p>
-        <p>Fresh coffee, brewed with love.</p>
-    </footer>
+            <label for="contactSubject">Subject:</label><br>
+            <input type="text" id="contactSubject" name="contactSubject" required><br><br>
+
+            <label for="contactMessage">Message:</label><br>
+            <textarea id="contactMessage" name="contactMessage" rows="6" cols="50" required></textarea><br><br>
+
+            <button type="submit">Send Message</button>
+            <button type="reset">Clear</button>
+        </form>
+
+        <p id="contactResponse" aria-live="polite"></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Kofi Coffee Shop. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("contactName").value.trim();
+        document.getElementById("contactResponse").textContent =
+            "Thank you, " + name + ". Your message has been received.";
+        this.reset();
+    });
+</script>
+
 </body>
 </html>
-
-GitHub (2026) GitHub Documentation. Available at: https://docs.github.com/ (Accessed: 15 September 2026).
-
-IEEE (2026) About IEEE. Available at: https://educationweek.ieee.org/about/ieee/ (Accessed: 15 September 2026).
-
-International Telecommunication Union (ITU) (2025) Exploring Sustainable Connectivity & Digital Skills Models for YNEETs in Rural and Township Communities. Available at: https://www.itu.int/hub/publication/d-pref-them-35-2025/ (Accessed: 15 September 2026).
-
-Lyman, M. and Chung, H. (2025) ‘Participatory design in rural Zambia’, Design Studies, 97, 101296. doi: 10.1016/j.destud.2025.101296.
-
-MDN Web Docs (2026) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 15 September 2026).
-
-Smith, A., Turpin, M. and Herselman, M. (2019) ‘Co-creating an ICT artefact with women in South Africa’. Available at: https://www.iadisportal.org/digital-library/co-creating-an-ict-artefact-with-women-in-south-africa (Accessed: 15 September 2026).
