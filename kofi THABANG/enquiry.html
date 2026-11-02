@@ -1,84 +1,163 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Make an Enquiry | Kofi Coffee Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Ask Kofi about menu items, catering, special orders and product availability. Complete our enquiry form for assistance.">
-    <meta name="keywords" content="Kofi catering enquiry, coffee shop menu enquiry">
+
+    <meta name="description" content="Contact Kofi Coffee Shop about our menu, catering, special orders and services. Submit an enquiry and let our team assist you.">
+    <meta name="keywords" content="Kofi Coffee Shop, catering enquiry, coffee shop menu, special orders, product enquiries">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#4b2e24">
+
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header>
     <h1>Make an Enquiry</h1>
+
     <nav aria-label="Main navigation">
         <a href="index.html">Home</a> |
         <a href="about.html">About</a> |
         <a href="products.html">Products</a> |
-        <a href="enquiry.html">Enquiry</a> |
+        <a href="enquiry.html" aria-current="page">Enquiry</a> |
         <a href="contact.html">Contact</a>
     </nav>
 </header>
 
-<main>
-    <section>
-        <h2>Product and Service Enquiries</h2>
+<main id="main-content">
+
+    <section aria-labelledby="enquiry-heading">
+
+        <h2 id="enquiry-heading">Product and Service Enquiries</h2>
+
         <p>
             Have a question about our menu, catering, special orders or services?
-            Complete the form below and the Kofi team will get back to you.
+            Complete the form below and the Kofi team will assist you.
+            Fields marked with an asterisk (*) are required.
         </p>
 
-        <form id="enquiryForm" action="#" method="get">
+        <form id="enquiryForm" action="#" method="post">
+
             <fieldset>
                 <legend>Your Details</legend>
 
-                <label for="name">Full Name:</label><br>
-                <input type="text" id="name" name="name" minlength="2" maxlength="80" autocomplete="name" required><br><br>
+                <label for="name">Full Name: *</label><br>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    minlength="2"
+                    maxlength="80"
+                    autocomplete="name"
+                    required
+                ><br><br>
 
-                <label for="email">Email Address:</label><br>
-                <input type="email" id="email" name="email" autocomplete="email" required><br><br>
+                <label for="email">Email Address: *</label><br>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    autocomplete="email"
+                    required
+                ><br><br>
 
                 <label for="phone">Phone Number:</label><br>
-                <input type="tel" id="phone" name="phone" pattern="(\\+27|0)[0-9 ]{9,12}" title="Enter a South African number, e.g. 0821234567 or +27821234567" autocomplete="tel"><br><br>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="0821234567 or +27821234567"
+                    pattern="(\+27|0)[0-9 ]{9,12}"
+                    title="Enter a South African phone number, e.g. 0821234567 or +27821234567"
+                    autocomplete="tel"
+                >
+                <small>Optional. Enter a South African phone number.</small><br><br>
+
             </fieldset>
 
             <fieldset>
                 <legend>Enquiry Details</legend>
 
-                <label for="enquiryType">Enquiry Type:</label><br>
+                <label for="enquiryType">Enquiry Type: *</label><br>
+
                 <select id="enquiryType" name="enquiryType" required>
                     <option value="">-- Select an option --</option>
                     <option value="menu">Menu/Product Enquiry</option>
                     <option value="catering">Catering</option>
                     <option value="special-order">Special Order</option>
                     <option value="feedback">Feedback</option>
+                    <option value="volunteering">Volunteering</option>
+                    <option value="sponsorship">Sponsorship</option>
                     <option value="other">Other</option>
                 </select><br><br>
 
                 <label for="preferredDate">Preferred Date:</label><br>
-                <input type="date" id="preferredDate" name="preferredDate" min="2026-11-02"><br><br>
 
-                <label for="message">Your Enquiry:</label><br>
-                <textarea id="message" name="message" rows="7" maxlength="1000" minlength="10" required></textarea><br><br>
+                <input
+                    type="date"
+                    id="preferredDate"
+                    name="preferredDate"
+                    min="2026-11-02"
+                ><br><br>
+
+                <label for="message">Your Enquiry: *</label><br>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="7"
+                    minlength="10"
+                    maxlength="1000"
+                    placeholder="Please explain your enquiry in detail..."
+                    required
+                ></textarea>
+
+                <small>Minimum 10 characters and maximum 1,000 characters.</small>
+
             </fieldset>
+
+            <!-- Spam prevention honeypot -->
+            <div class="honeypot" aria-hidden="true">
+                <label for="website">Leave this field empty</label>
+                <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabindex="-1"
+                    autocomplete="off"
+                >
+            </div>
 
             <button type="submit">Submit Enquiry</button>
             <button type="reset">Clear Form</button>
+
         </form>
 
-        <p id="enquiryResponse" aria-live="polite"></p>
+        <p id="enquiryResponse" role="status" aria-live="polite"></p>
+
     </section>
+
 </main>
 
 <footer>
     <p>&copy; 2026 Kofi Coffee Shop. All rights reserved.</p>
+
+    <nav aria-label="Footer navigation">
+        <a href="index.html">Home</a> |
+        <a href="contact.html">Contact Us</a>
+    </nav>
 </footer>
-
-
 
 </body>
 </html>
+

@@ -1,41 +1,48 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Kofi | Our Coffee Shop & Story</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Learn about Kofi, our coffee shop values, team, mission and commitment to serving quality coffee and food.">
-    <meta name="keywords" content="about Kofi, local coffee shop, coffee">
+
+    <title>About Kofi | Our Story, Mission and Coffee Shop Values</title>
+
+    <meta name="description" content="Discover Kofi, a welcoming local coffee shop serving quality coffee, fresh food and friendly service. Learn about our history, mission and team.">
+
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#4b2e24">
+
+    <meta property="og:title" content="About Kofi Coffee Shop">
+    <meta property="og:description" content="Discover our story, team, mission and passion for quality coffee.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-```
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Header -->
 <header>
     <h1>Kofi</h1>
     <p>Fresh coffee, brewed with love.</p>
 
-    <nav>
-       <a href="index.html">Home</a> |
-        <a href="about.html">About us</a> |
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a> |
+        <a href="about.html" aria-current="page">About Us</a> |
         <a href="products.html">Products</a> |
         <a href="enquiry.html">Enquiry</a> |
         <a href="contact.html">Contact</a>
-    
-    </nav>
     </nav>
 </header>
 
 <hr>
 
-<main>
+<main id="main-content">
 
     <!-- Introduction -->
     <section>
@@ -49,12 +56,12 @@
             can meet, relax, work, study, and enjoy meaningful moments.
         </p>
 
-        <img loading="lazy" alt="Kofi coffee shop image" src="images/snapiv.png" alt="Kofi coffee shop atmosphere" loading="lazy"
-        srcset="images/snapiv -small.jpg 480w, images/snapiv -medium.jpg 800w, images/snapiv -large.jpg 1200w"
-    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw">
-           
+        <img
+            src="images/snapiv.png"
+            alt="Welcoming atmosphere inside Kofi coffee shop"
+            loading="lazy"
+            class="about-image">
     </section>
-
 
     <!-- Organisation History -->
     <section>
@@ -89,7 +96,6 @@
         </p>
     </section>
 
-
     <!-- Mission -->
     <section>
         <h2>Our Mission</h2>
@@ -107,7 +113,6 @@
             to create positive experiences for everyone who visits Kofi.
         </p>
     </section>
-
 
     <!-- Vision -->
     <section>
@@ -127,44 +132,37 @@
         </p>
     </section>
 
-
-    <!-- Our Values -->
+    <!-- Values -->
     <section>
         <h2>Our Values</h2>
 
         <ul>
             <li>
                 <strong>Quality:</strong>
-                We are committed to providing quality coffee, food, and
-                service.
+                We are committed to providing quality coffee, food, and service.
             </li>
 
             <li>
                 <strong>Customer Satisfaction:</strong>
-                We listen to our customers and aim to make every visit
-                enjoyable.
+                We listen to our customers and aim to make every visit enjoyable.
             </li>
 
             <li>
                 <strong>Community:</strong>
-                We believe in creating a space where people can connect
-                and feel welcome.
+                We believe in creating a space where people can connect and feel welcome.
             </li>
 
             <li>
                 <strong>Hospitality:</strong>
-                We treat our customers with friendliness, respect, and
-                care.
+                We treat our customers with friendliness, respect, and care.
             </li>
 
             <li>
                 <strong>Passion:</strong>
-                We are passionate about coffee and take pride in what
-                we serve.
+                We are passionate about coffee and take pride in what we serve.
             </li>
         </ul>
     </section>
-
 
     <!-- Organisation Members -->
     <section>
@@ -177,10 +175,8 @@
             operate successfully.
         </p>
 
-
         <article>
-            <h3>Thabang – Founder & Manager</h3>
-
+            <h3>Thabang – Founder and Manager</h3>
             <p>
                 As the founder and manager of Kofi, Thabang oversees the
                 day-to-day operations of the coffee shop. This includes
@@ -190,10 +186,8 @@
             </p>
         </article>
 
-
         <article>
             <h3>Coffee Barista – Coffee Specialist</h3>
-
             <p>
                 Our barista is responsible for preparing and serving
                 high-quality coffee and other beverages. From espresso
@@ -202,10 +196,8 @@
             </p>
         </article>
 
-
         <article>
             <h3>Kitchen Team – Food Preparation</h3>
-
             <p>
                 Our kitchen team prepares the delicious food and treats
                 available at Kofi. They help maintain freshness, quality,
@@ -213,19 +205,15 @@
             </p>
         </article>
 
-
         <article>
             <h3>Customer Service Team</h3>
-
             <p>
-                Our customer service team welcomes customers, takes
-                orders, assists with enquiries, and helps create the
-                friendly atmosphere that Kofi is known for.
+                Our customer service team welcomes customers, takes orders,
+                assists with enquiries, and helps create the friendly
+                atmosphere that Kofi is known for.
             </p>
         </article>
-
     </section>
-
 
     <!-- Customer Experience -->
     <section>
@@ -246,6 +234,68 @@
         </p>
     </section>
 
+    <!-- Interactive FAQ Accordion -->
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <article>
+            <h3>
+                <button
+                    type="button"
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="faq-answer-1">
+                    What products does Kofi offer?
+                </button>
+            </h3>
+
+            <div id="faq-answer-1" hidden>
+                <p>
+                    Kofi offers a selection of coffee, including espresso,
+                    cappuccino, Americano and iced coffee, as well as
+                    hot chocolate, croissants, muffins and sandwiches.
+                </p>
+            </div>
+        </article>
+
+        <article>
+            <h3>
+                <button
+                    type="button"
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="faq-answer-2">
+                    How can I enquire about products?
+                </button>
+            </h3>
+
+            <div id="faq-answer-2" hidden>
+                <p>
+                    You can visit our Enquiry page to ask questions about
+                    our products, catering and special orders.
+                </p>
+            </div>
+        </article>
+
+        <article>
+            <h3>
+                <button
+                    type="button"
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="faq-answer-3">
+                    How can I contact Kofi?
+                </button>
+            </h3>
+
+            <div id="faq-answer-3" hidden>
+                <p>
+                    Visit our Contact page to send a general message
+                    to our team.
+                </p>
+            </div>
+        </article>
+    </section>
 
     <!-- Call to Action -->
     <section>
@@ -258,7 +308,9 @@
         </p>
 
         <p>
-            <strong>Fresh coffee. Good food. Great moments. That's Kofi.</strong>
+            <strong>
+                Fresh coffee. Good food. Great moments. That's Kofi.
+            </strong>
         </p>
 
         <p>
@@ -275,9 +327,14 @@
 <footer>
     <p>&copy; 2026 Kofi Coffee Shop. All rights reserved.</p>
     <p>Fresh coffee, brewed with love.</p>
+
+    <nav aria-label="Footer navigation">
+        <a href="index.html">Home</a> |
+        <a href="about.html">About</a> |
+        <a href="products.html">Products</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
 </footer>
-```
 
 </body>
-
 </html>

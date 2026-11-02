@@ -1,0 +1,49 @@
+
+// ==========================================
+// KOFI ABOUT PAGE - FAQ ACCORDION
+// ==========================================
+
+const faqButtons = document.querySelectorAll(".accordion-trigger");
+
+faqButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        // Get the answer connected to the clicked button.
+        const answerId = button.getAttribute("aria-controls");
+
+        const answer = document.getElementById(answerId);
+
+        // Check whether the answer is currently open.
+        const isExpanded =
+            button.getAttribute("aria-expanded") === "true";
+
+        // Toggle the answer visibility.
+        button.setAttribute(
+            "aria-expanded",
+            String(!isExpanded)
+        );
+
+        answer.hidden = isExpanded;
+
+    });
+
+});
+
+
+// ==========================================
+// DYNAMIC COPYRIGHT YEAR
+// ==========================================
+
+const copyrightYear = document.getElementById("copyrightYear");
+
+if (copyrightYear) {
+
+    copyrightYear.textContent = new Date().getFullYear();
+
+}
+
+
+// ==========================================
+// END OF ABOUT PAGE FUNCTIONALITY
+// ==========================================

@@ -1,0 +1,140 @@
+
+
+// ==========================================
+// KOFI CONTACT PAGE FUNCTIONALITY
+// ==========================================
+
+
+// 1. INITIALISE THE INTERACTIVE MAP
+
+const kofiMapElement = document.getElementById("kofiMap");
+
+if (kofiMapElement) {
+
+    if (typeof L !== "undefined") {
+
+        // Create the map centred between the two general areas.
+        const kofiMap = L.map("kofiMap").setView(
+            [-25.7475, 28.2135],
+            13
+        );
+
+        // Add OpenStreetMap tiles.
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                attribution:
+                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }
+        ).addTo(kofiMap);
+
+        // Pretoria Central general area.
+        const pretoriaMarker = L.marker(
+            [-25.7460, 28.1880]
+        ).addTo(kofiMap);
+
+        pretoriaMarker.bindPopup(
+            "<strong>Kofi Main Store</strong><br>Pretoria Central, Gauteng."
+        );
+
+        // Hatfield general area.
+        const hatfieldMarker = L.marker(
+            [-25.7460, 28.2380]
+        ).addTo(kofiMap);
+
+        hatfieldMarker.bindPopup(
+            "<strong>Kofi City Branch</strong><br>Hatfield, Pretoria."
+        );
+
+        // Display both markers when the map loads.
+        const locationBounds = L.latLngBounds(
+            [-25.7460, 28.1880],
+            [-25.7460, 28.2380]
+        );
+
+        kofiMap.fitBounds(locationBounds, {
+            padding: [30, 30]
+        });
+
+    } else {
+
+        kofiMapElement.textContent =
+            "The interactive map could not load. Please use the Google Maps links above.";
+
+    }
+}
+
+
+// 2. CONTACT FORM VALIDATION
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+
+    const contactResponse =
+        document.getElementById("contactResponse");
+
+    contactForm.addEventListener("submit", function(event) {
+
+        // Stop the form from submitting automatically.
+        event.preventDefault();
+
+        // Check whether all required fields are valid.
+        if (!contactForm.checkValidity()) {
+
+            contactForm.reportValidity();
+
+            contactResponse.textContent =
+                "Please complete all required fields correctly.";
+
+            return;
+        }
+
+        // Get the customer's information.
+        const customerName =
+            document.getElementById("contactName").value.trim();
+
+        const customerEmail =
+            document.getElementById("contactEmail").value.trim();
+
+        const customerMessage =
+            document.getElementById("contactMessage").value.trim();
+
+        // Additional JavaScript validation.
+        if (
+            customerName.length < 2 ||
+            customerEmail === "" ||
+            customerMessage.length < 10
+        ) {
+
+            contactResponse.textContent =
+                "Please check your name, email address and message.";
+
+            return;
+        }
+
+        // Display confirmation.
+        contactResponse.textContent =
+            "Thank you, " + customerName +
+            "! Your contact form has been validated successfully. " +
+            "This demonstration form does not send emails yet.";
+
+        // Do not clear the customer's information.
+    });
+
+
+    // 3. CLEAR THE RESPONSE WHEN THE FORM IS RESET.
+
+    contactForm.addEventListener("reset", function() {
+
+        contactResponse.textContent = "";
+
+    });
+
+}
+
+
+// ==========================================
+// END OF CONTACT PAGE FUNCTIONALITY
+// ==========================================

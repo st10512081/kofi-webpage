@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kofi Products | Coffee, Drinks and Fresh Food</title>
+
+    <meta name="description" content="Explore Kofi Coffee Shop's menu of freshly prepared coffee, cappuccino, iced coffee, hot chocolate, croissants, muffins and sandwiches.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#4b2e24">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Kofi Coffee Shop Products">
+    <meta property="og:description" content="Discover delicious coffee, refreshing drinks and fresh food at Kofi Coffee Shop.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/snapiv.jpg">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Accessibility skip link -->
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
+
+
+    <!-- Header -->
+    <header>
+
+        <h1>Kofi Coffee Shop</h1>
+
+        <p>Fresh coffee, brewed with love.</p>
+
+        <nav aria-label="Main navigation">
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="products.html" aria-current="page">Products</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main content -->
+    <main id="main-content">
+
+
+        <!-- Introduction -->
+        <section aria-labelledby="products-heading">
+
+            <h2 id="products-heading">Our Products</h2>
+
+            <p>
+                Welcome to Kofi Coffee Shop. Explore our selection of
+                delicious coffee, refreshing drinks and freshly prepared
+                food. Use our search and sorting features to find your
+                favourite products.
+            </p>
+
+        </section>
+
+
+        <!-- Search functionality -->
+        <section aria-labelledby="search-heading">
+
+            <h2 id="search-heading">Search Our Menu</h2>
+
+            <form id="menuSearchForm">
+
+                <label for="menuSearch">Search for a product:</label>
+
+                <input
+                    type="search"
+                    id="menuSearch"
+                    name="menuSearch"
+                    placeholder="Search coffee, muffins, sandwiches..."
+                    autocomplete="off"
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+
+                <button type="button" id="clearSearch">
+                    Clear Search
+                </button>
+
+            </form>
+
+            <p id="searchMessage" role="status" aria-live="polite">
+                Showing all products.
+            </p>
+
+
+            <!-- Product sorting -->
+            <label for="sortProducts">Sort products:</label>
+
+            <select id="sortProducts" name="sortProducts">
+
+                <option value="name">Name (A-Z)</option>
+
+                <option value="price-low">
+                    Price: Low to High
+                </option>
+
+                <option value="price-high">
+                    Price: High to Low
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- Shopping cart -->
+        <section aria-labelledby="cart-heading">
+
+            <h2 id="cart-heading">Your Shopping Cart</h2>
+
+            <p id="cartStatus" role="status" aria-live="polite">
+                Cart: 0 item(s) — Total R0.00
+            </p>
+
+            <p>
+                <small>
+                    The shopping cart is a demonstration feature.
+                    It does not process payments or place real orders.
+                </small>
+            </p>
+
+        </section>
+
+
+        <!-- Product catalogue -->
+        <section id="menuItems" aria-labelledby="menu-heading">
+
+            <h2 id="menu-heading">Our Menu</h2>
+
+
+            <!-- Espresso -->
+            <article class="menu-item"
+                data-name="Espresso"
+                data-price="25">
+
+                <img
+                    src="images/espresso.jpg"
+                    alt="Freshly prepared espresso coffee"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Espresso</h3>
+
+                <p>
+                    A rich and bold coffee made from freshly brewed
+                    espresso beans.
+                </p>
+
+                <p><strong>Price: R25.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Cappuccino -->
+            <article class="menu-item"
+                data-name="Cappuccino"
+                data-price="35">
+
+                <img
+                    src="images/cappuccino.jpg"
+                    alt="Creamy cappuccino topped with milk foam"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Cappuccino</h3>
+
+                <p>
+                    Smooth espresso combined with steamed milk
+                    and creamy milk foam.
+                </p>
+
+                <p><strong>Price: R35.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Americano -->
+            <article class="menu-item"
+                data-name="Americano"
+                data-price="30">
+
+                <img
+                    src="images/americano.jpg"
+                    alt="Freshly prepared Americano coffee"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Americano</h3>
+
+                <p>
+                    A classic coffee made by combining espresso
+                    with hot water for a smooth taste.
+                </p>
+
+                <p><strong>Price: R30.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Iced Coffee -->
+            <article class="menu-item"
+                data-name="Iced Coffee"
+                data-price="40">
+
+                <img
+                    src="images/iced-coffee.jpg"
+                    alt="Refreshing chilled iced coffee"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Iced Coffee</h3>
+
+                <p>
+                    A refreshing chilled coffee drink, perfect
+                    for warm days.
+                </p>
+
+                <p><strong>Price: R40.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Hot Chocolate -->
+            <article class="menu-item"
+                data-name="Hot Chocolate"
+                data-price="35">
+
+                <img
+                    src="images/hot-chocolate.jpg"
+                    alt="Warm and creamy hot chocolate"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Hot Chocolate</h3>
+
+                <p>
+                    A warm and comforting chocolate drink
+                    topped with creamy milk foam.
+                </p>
+
+                <p><strong>Price: R35.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Croissant -->
+            <article class="menu-item"
+                data-name="Croissant"
+                data-price="28">
+
+                <img
+                    src="images/croissant.jpg"
+                    alt="Freshly baked golden croissant"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Croissant</h3>
+
+                <p>
+                    A buttery pastry with a light and flaky texture,
+                    freshly prepared for our customers.
+                </p>
+
+                <p><strong>Price: R28.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Chocolate Muffin -->
+            <article class="menu-item"
+                data-name="Chocolate Muffin"
+                data-price="30">
+
+                <img
+                    src="images/chocolate-muffin.jpg"
+                    alt="Delicious freshly baked chocolate muffin"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Chocolate Muffin</h3>
+
+                <p>
+                    A soft and delicious chocolate muffin,
+                    perfect with your favourite coffee.
+                </p>
+
+                <p><strong>Price: R30.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+
+            <!-- Chicken Sandwich -->
+            <article class="menu-item"
+                data-name="Chicken Sandwich"
+                data-price="55">
+
+                <img
+                    src="images/chicken-sandwich.jpg"
+                    alt="Fresh chicken sandwich with tasty ingredients"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                >
+
+                <h3>Chicken Sandwich</h3>
+
+                <p>
+                    A satisfying sandwich prepared with chicken
+                    and fresh ingredients.
+                </p>
+
+                <p><strong>Price: R55.00</strong></p>
+
+                <button type="button">
+                    Add to Cart
+                </button>
+
+            </article>
+
+        </section>
+
+
+        <!-- Product enquiries -->
+        <section aria-labelledby="enquiry-heading">
+
+            <h2 id="enquiry-heading">
+                Have Questions About Our Products?
+            </h2>
+
+            <p>
+                Contact us for more information about our menu,
+                catering options and special orders.
+            </p>
+
+            <a href="enquiry.html">Make an Enquiry</a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Image lightbox -->
+    <div id="imageLightbox" hidden>
+
+        <button
+            type="button"
+            aria-label="Close enlarged product image"
+        >
+            Close &times;
+        </button>
+
+        <img
+            src="images/snapiv.jpg"
+            alt="Enlarged product image"
+        >
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <hr>
+
+        <p>
+            &copy; <span id="copyrightYear">2026</span>
+            Kofi Coffee Shop. All rights reserved.
+        </p>
+
+        <p>Fresh coffee, brewed with love.</p>
+
+        <nav aria-label="Footer navigation">
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+    </footer>
+
+</body>
+</html>
