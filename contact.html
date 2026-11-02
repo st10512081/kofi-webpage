@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kofi | Contact</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -38,8 +39,7 @@
             <h3>Kofi Main Store – Pretoria Central</h3>
             <p>Pretoria Central, Gauteng, South Africa</p>
             <p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Pretoria+Central+Gauteng+South+Africa"
-                   target="_blank" rel="noopener">
+                
                     View location on Google Maps
                 </a>
             </p>
@@ -49,8 +49,7 @@
             <h3>Kofi City Branch – Hatfield</h3>
             <p>Hatfield, Pretoria, Gauteng, South Africa</p>
             <p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Hatfield+Pretoria+Gauteng+South+Africa"
-                   target="_blank" rel="noopener">
+                
                     View location on Google Maps
                 </a>
             </p>
@@ -85,16 +84,7 @@
     <p>&copy; 2026 Kofi Coffee Shop. All rights reserved.</p>
 </footer>
 
-<script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-        event.preventDefault();
 
-        const name = document.getElementById("contactName").value.trim();
-        document.getElementById("contactResponse").textContent =
-            "Thank you, " + name + ". Your message has been received.";
-        this.reset();
-    });
-</script>
 
 </body>
 </html>

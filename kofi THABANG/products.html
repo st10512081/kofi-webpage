@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kofi Menu | Coffee, Drinks & Snacks</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Explore the Kofi menu, including espresso, cappuccino, iced coffee, matcha, pastries and snacks. Search products and view prices.">
+    <meta name="keywords" content="coffee menu, cappuccino, espresso, matcha, snacks">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#4b2e24">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Header contains navigation so visitors can move between every page. -->
+    <header>
+        <h1>Kofi</h1>
+        <p>Fresh coffee, brewed with love.</p>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a> |
+            <a href="about.html">About us</a> |
+            <a href="products.html">Products</a> |
+            <a href="enquiry.html">Enquiry</a> |
+                <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <section>
+            <h2>Our Products</h2>
+            <p>
+                Search for a drink or snack below. For example, try
+                <strong>Espresso</strong>, <strong>Matcha</strong> or
+                <strong>Croissant</strong>.
+            </p>
+
+            <!-- The search form is connected to the JavaScript below so it filters menu items. -->
+            <form id="menuSearchForm">
+                <label for="menuSearch">Search Products:</label>
+                <input
+                    type="search"
+                    id="menuSearch"
+                    name="q"
+                    placeholder="e.g. Espresso"
+                    autocomplete="off"
+                >
+                <button type="submit">Search</button>
+                <button type="button" id="clearSearch">Clear</button>
+                <label for="sortProducts">Sort:</label>
+                <select id="sortProducts"><option value="name">Name (A–Z)</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select>
+            </form>
+
+            <p id="searchMessage" aria-live="polite"></p>
+            <p id="cartStatus" aria-live="polite">Cart: 0 items</p>
+        </section>
+
+        <hr>
+
+        <section id="menuItems">
+            <h2>Hot Drinks</h2>
+
+            <article class="menu-item" data-name="espresso" data-price="25">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/espresso.jpg"
+    srcset="images/espresso -small.jpg 480w, images/espresso -medium.jpg 800w, images/espresso -large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Espresso">
+
+                <h3>Espresso</h3>
+                <p>Strong and rich coffee served in a small cup.</p>
+                <p><strong>Price: R25</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="cappuccino" data-price="35">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/cappuccino.jpg"
+    srcset="images/cappuccino -small.jpg 480w, images/cappuccino -medium.jpg 800w, images/cappuccino -large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Cappuccino">
+
+                <h3>Cappuccino</h3>
+                <p>Espresso combined with steamed milk and a layer of foam.</p>
+                <p><strong>Price: R35</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="americano" data-price="30">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/Americano.jpg"
+    srcset="images/Americano -small.jpg 480w, images/Americano -medium.jpg 800w, images/Americano -large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Americano">
+
+                <h3>Americano</h3>
+                <p>Espresso combined with hot water for a smooth coffee.</p>
+                <p><strong>Price: R30</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="hot chocolate" data-price="32">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/Hot Chocolate.jpg"
+    srcset="images/Hot Chocolate-small.jpg 480w, images/Hot Chocolate-medium.jpg 800w, images/Hot Chocolate-large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Hot Chocolate">
+
+                <h3>Hot Chocolate</h3>
+                <p>A warm and comforting chocolate drink.</p>
+                <p><strong>Price: R32</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <h2>Cold Drinks</h2>
+
+            <article class="menu-item" data-name="iced coffee" data-price="38">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/iced coffee.jpg"
+    srcset="images/iced coffee-small.jpg 480w, images/iced coffee-medium.jpg 800w, images/iced coffee-large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Iced Coffee">
+
+                <h3>Iced Coffee</h3>
+                <p>Chilled coffee served as a refreshing cold drink.</p>
+                <p><strong>Price: R38</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="cold brew" data-price="40">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/cold brew.jpg"
+    srcset="images/cold brew-small.jpg 480w, images/cold brew-medium.jpg 800w, images/cold brew-large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Cold Brew">
+
+                <h3>Cold Brew</h3>
+                <p>Smooth chilled coffee prepared for a refreshing taste.</p>
+                <p><strong>Price: R40</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="matcha" data-price="42">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/matcha.jpg"
+    srcset="images/matcha -small.jpg 480w, images/matcha -medium.jpg 800w, images/matcha -large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Matcha">
+
+                <h3>Matcha</h3>
+                <p>A smooth green tea drink with a distinctive flavour.</p>
+                <p><strong>Price: R42</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <h2>Snacks</h2>
+
+            <article class="menu-item" data-name="croissant" data-price="28">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/Croissant.jpg"
+    srcset="images/Croissant -small.jpg 480w, images/Croissant -medium.jpg 800w, images/Croissant -large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Croissant">
+
+                <h3>Croissant</h3>
+                <p>A light and flaky pastry that pairs well with coffee.</p>
+                <p><strong>Price: R28</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="muffin" data-price="25">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/Muffin.jpg"
+    srcset="images/Muffin -small.jpg 480w, images/Muffin -medium.jpg 800w, images/Muffin -large.jpg 1200w"
+
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Muffin">
+
+                <h3>Muffin</h3>
+                <p>A soft baked snack suitable for breakfast or a coffee break.</p>
+                <p><strong>Price: R25</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="toasted sandwich" data-price="45">
+                <img loading="lazy" alt="Kofi coffee shop image"
+    src="images/sandwich.jpg"
+    srcset="images/sandwich -small.jpg 480w, images/sandwich -medium.jpg 800w, images/sandwich -large.jpg 1200w"
+    sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 50vw"
+    alt="Toasted Sandwich">
+
+       
+                
+                  
+                <h3>Toasted Sandwich</h3>
+                <p>A warm toasted sandwich for a more filling snack.</p>
+                <p><strong>Price: R45</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Ordering Information</h2>
+            <p>
+                The search function filters the menu on this page. The
+                Add to Cart buttons allows you to select items for purchase. 
+            </p>
+        </section>
+
+        <hr>
+
+        <p><a href="index.html">Back to Home</a></p>
+    <div id="imageLightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Enlarged product image">
+        <button type="button" aria-label="Close enlarged image">Close ✕</button>
+        <img loading="lazy" alt="Kofi coffee shop image" src="" alt="">
+    </div>
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 Kofi. All rights reserved.</p>
+    </footer>
+
+   
+
+</body>
+</html>
+
+https://github.com/st10512081/kofi-webpage.git

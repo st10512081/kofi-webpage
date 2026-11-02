@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Kofi | Location, Hours & Message</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Contact Kofi for general questions, feedback and support. Find our contact information and send our team a message.">
+    <meta name="keywords" content="contact Kofi, Kofi coffee shop contact">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#4b2e24">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>Contact Kofi</h1>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a> |
+        <a href="about.html">About us</a> |
+        <a href="products.html">Products</a> |
+        <a href="enquiry.html">Enquiry</a> |
+        <a href="contact.html">Contact</a>
+    
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Get in Touch</h2>
+        <p>We would love to hear from you.</p>
+
+        <address>
+            <strong>Email:</strong> <a href="mailto:hello@kofi.example">hello@kofi.example</a><br>
+            <strong>Phone:</strong> <a href="tel:+27123456789">+27 12 345 6789</a><br>
+            <strong>Opening Hours:</strong> Monday–Sunday, 07:00–18:00
+        </address>
+    </section>
+
+    <section>
+        <h2>Our Locations</h2>
+
+        <article> <h3>Kofi Main Store – Pretoria Central</h3> 
+            <p> <strong>Location:</strong> Pretoria Central, Gauteng, South Africa </p> 
+            <p> Our main store is located in the heart of Pretoria Central. It is a welcoming space where customers can enjoy their favourite coffee, meet friends, study, work, or relax. </p>
+             <p> <a href="https://www.google.com/maps/search/?api=1&query=Pretoria+Central+Gauteng+South+Africa" target="_blank"> View location on Google Maps </a> 
+            </p> </article> 
+            
+            <article> <h3>Kofi City Branch – Hatfield</h3> 
+                <p> <strong>Location:</strong> Hatfield, Pretoria, Gauteng, South Africa </p>
+                 <p> Our Hatfield branch offers a convenient place for students, professionals, residents, and visitors to enjoy freshly prepared coffee and tasty meals in a comfortable environment. </p>
+                  <p> <a href="https://www.google.com/maps/search/?api=1&query=Hatfield+Pretoria+Gauteng+South+Africa" target="_blank"> 
+                    View location on Google Maps </a>
+                     
+                 </p> </article> 
+                View location on Google Maps</section>
+                  
+                </a>
+            </p>
+        </article>
+    </section>
+
+    <section>
+        <h2>Contact Form</h2>
+
+        <form id="contactForm" action="mailto:hello@kofi.co.za" method="post" enctype="text/plain">
+            <label for="contactName">Name:</label><br>
+            <input type="text" id="contactName" name="contactName" minlength="2" maxlength="80" autocomplete="name" required><br><br>
+
+            <label for="contactEmail">Email:</label><br>
+            <input type="email" id="contactEmail" name="contactEmail" autocomplete="email" required><br><br>
+
+            <label for="contactType">Message Type:</label><br>\n            <select id="contactType" name="contactType" required><option value="">-- Select message type --</option><option>General question</option><option>Feedback</option><option>Complaint</option><option>Compliment</option><option>Other</option></select><br><br>\n            <label for="contactSubject">Subject:</label><br>
+            <input type="text" id="contactSubject" name="contactSubject" minlength="3" maxlength="100" required><br><br>
+
+            <label for="contactMessage">Message:</label><br>
+            <textarea id="contactMessage" name="contactMessage" rows="6" maxlength="2000" minlength="10" required></textarea><br><br>
+
+            <button type="submit">Send Message</button>
+            <button type="reset">Clear</button>
+        </form>
+
+        <p id="contactResponse" aria-live="polite"></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Kofi Coffee Shop. All rights reserved.</p>
+</footer>
+
+
+
+</body>
+</html>
