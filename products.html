@@ -1,228 +1,964 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kofi - Products</title>
-</head>
-<body>
 
-    <!-- Header contains navigation so visitors can move between every page. -->
-    <header>
-        <h1>Kofi</h1>
-        <p>Fresh coffee, brewed with love.</p>
+    <title>Kofi Coffee Shop | Our Menu</title>
 
-        <nav aria-label="Main navigation">
-            <a href="index.html">Home</a> |
-            <a href="about.html">About us</a> |
-            <a href="products.html">Products</a> |
-            <a href="enquiry.html">Enquiry</a> |
-                <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+    <meta name="description"
+        content="Explore the Kofi Coffee Shop menu. Enjoy freshly prepared coffee, refreshing drinks and delicious snacks.">
 
-    <hr>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 
-    <main>
-        <section>
-            <h2>Our Products</h2>
-            <p>
-                Search for a drink or snack below. For example, try
-                <strong>Espresso</strong>, <strong>Matcha</strong> or
-                <strong>Croissant</strong>.
-            </p>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-            <!-- The search form is connected to the JavaScript below so it filters menu items. -->
-            <form id="menuSearchForm">
-                <label for="menuSearch">Search Products:</label>
-                <input
-                    type="search"
-                    id="menuSearch"
-                    name="q"
-                    placeholder="e.g. Espresso"
-                    autocomplete="off"
-                >
-                <button type="submit">Search</button>
-                <button type="button" id="clearSearch">Clear</button>
-            </form>
+        [hidden] {
+            display: none !important;
+        }
 
-            <p id="searchMessage"></p>
-        </section>
+        body {
+            margin: 0;
+            background: #050505;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
-        <hr>
+        /* ==============================
+           MENU INTRODUCTION
+        ============================== */
 
-        <section id="menuItems">
-            <h2>Hot Drinks</h2>
+        .menu-banner {
+            background: linear-gradient(120deg, #030D2E, #0647FF);
+            text-align: center;
+            padding: 65px 20px;
+        }
 
-            <article class="menu-item" data-name="espresso">
-                <img src="images/espresso.jpg" alt="Espresso" width="200">
-                <h3>Espresso</h3>
-                <p>Strong and rich coffee served in a small cup.</p>
-                <p><strong>Price: R25</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        .menu-banner h1 {
+            font-size: 42px;
+            margin: 0 0 12px;
+            color: #ffffff;
+        }
 
-            <hr>
+        .menu-banner p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+            color: #eeeeee;
+        }
 
-            <article class="menu-item" data-name="cappuccino">
-                <img src="images/cappuccino.jpg" alt="Cappuccino" width="200">
-                <h3>Cappuccino</h3>
-                <p>Espresso combined with steamed milk and a layer of foam.</p>
-                <p><strong>Price: R35</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        /* ==============================
+           SEARCH AND SORT
+        ============================== */
 
-            <hr>
+        .menu-search-section {
+            max-width: 1050px;
+            margin: 35px auto 25px;
+            padding: 0 20px;
+            text-align: center;
+        }
 
-            <article class="menu-item" data-name="americano">
-                <img src="images/Americano.jpg" alt="Americano" width="200">
-                <h3>Americano</h3>
-                <p>Espresso combined with hot water for a smooth coffee.</p>
-                <p><strong>Price: R30</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        #menuSearchForm {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 750px;
+            margin: auto;
+        }
 
-            <hr>
+        #menuSearch {
+            flex: 1;
+            min-width: 0;
+            padding: 14px 16px;
+            border: 2px solid #0647FF;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #111111;
+            font-size: 15px;
+            outline: none;
+        }
 
-            <article class="menu-item" data-name="hot chocolate">
-                <img src="images/Hot Chocolate.jpg" alt="Hot Chocolate" width="200">
-                <h3>Hot Chocolate</h3>
-                <p>A warm and comforting chocolate drink.</p>
-                <p><strong>Price: R32</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        #menuSearch:focus {
+            border-color: #FF6A00;
+            box-shadow: 0 0 8px rgba(255, 106, 0, 0.35);
+        }
 
-            <hr>
+        #menuSearchForm button,
+        #clearSearch {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 9px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-            <h2>Cold Drinks</h2>
+        #menuSearchForm button:hover,
+        #clearSearch:hover {
+            background: #0647FF;
+        }
 
-            <article class="menu-item" data-name="iced coffee">
-                <img src="images/iced coffee.jpg" alt="Iced Coffee" width="200">
-                <h3>Iced Coffee</h3>
-                <p>Chilled coffee served as a refreshing cold drink.</p>
-                <p><strong>Price: R38</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        .search-options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
 
-            <hr>
+        .search-options label {
+            color: #ffffff;
+            font-weight: bold;
+        }
 
-            <article class="menu-item" data-name="cold brew">
-                <img src="images/cold brew.jpg" alt="Cold Brew" width="200">
-                <h3>Cold Brew</h3>
-                <p>Smooth chilled coffee prepared for a refreshing taste.</p>
-                <p><strong>Price: R40</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        #sortProducts {
+            padding: 11px 15px;
+            border: 1px solid #0647FF;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #111111;
+            cursor: pointer;
+        }
 
-            <hr>
+        #searchMessage {
+            margin: 16px 0 0;
+            color: #FF6A00;
+            font-size: 14px;
+        }
 
-            <article class="menu-item" data-name="matcha">
-                <img src="images/matcha.jpg" alt="Matcha" width="200">
-                <h3>Matcha</h3>
-                <p>A smooth green tea drink with a distinctive flavour.</p>
-                <p><strong>Price: R42</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        #noProductsMessage {
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 20px;
+            text-align: center;
+            color: #FF6A00;
+            background: #101010;
+            border: 1px solid #FF6A00;
+            border-radius: 10px;
+        }
 
-            <hr>
+        /* ==============================
+           MENU LAYOUT
+        ============================== */
 
-            <h2>Snacks</h2>
+        .menu-layout {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 25px auto 60px;
+            padding: 20px;
+            align-items: start;
+        }
 
-            <article class="menu-item" data-name="croissant">
-                <img src="images/Croissant.jpg" alt="Croissant" width="200">
-                <h3>Croissant</h3>
-                <p>A light and flaky pastry that pairs well with coffee.</p>
-                <p><strong>Price: R28</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        /* ==============================
+           CATEGORY SIDEBAR
+        ============================== */
 
-            <hr>
+        .menu-sidebar {
+            position: sticky;
+            top: 100px;
+            background: #030D2E;
+            border: 1px solid #0647FF;
+            border-radius: 13px;
+            padding: 22px;
+        }
 
-            <article class="menu-item" data-name="muffin">
-                <img src="images/Muffin.jpg" alt="Muffin" width="200">
-                <h3>Muffin</h3>
-                <p>A soft baked snack suitable for breakfast or a coffee break.</p>
-                <p><strong>Price: R25</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
+        .menu-sidebar h2 {
+            margin: 0 0 15px;
+            color: #FF6A00;
+            font-size: 21px;
+        }
 
-            <hr>
+        .menu-sidebar a {
+            display: block;
+            padding: 13px 8px;
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.3s;
+        }
 
-            <article class="menu-item" data-name="toasted sandwich">
-                <img src="images/sandwich.jpg" alt="Toasted Sandwich" width="200">
-                <h3>Toasted Sandwich</h3>
-                <p>A warm toasted sandwich for a more filling snack.</p>
-                <p><strong>Price: R45</strong></p>
-                <button type="button">Add to Cart</button>
-            </article>
-        </section>
+        .menu-sidebar a:hover {
+            color: #FF6A00;
+            padding-left: 14px;
+        }
 
-        <hr>
+        /* ==============================
+           CATEGORY HEADINGS
+        ============================== */
 
-        <section>
-            <h2>Ordering Information</h2>
-            <p>
-                The search function filters the menu on this page. The
-                Add to Cart buttons are currently visual buttons only and
-                would require additional shopping-cart functionality.
-            </p>
-        </section>
+        .category-section {
+            margin-bottom: 48px;
+            scroll-margin-top: 100px;
+        }
 
-        <hr>
+        .category-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding: 15px 18px;
+            background: linear-gradient(90deg, #030D2E, #101010);
+            border-left: 5px solid #FF6A00;
+            border-radius: 9px;
+        }
 
-        <p><a href="index.html">Back to Home</a></p>
-    </main>
+        .category-sticker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            background: #ffffff;
+            border-radius: 50%;
+            font-size: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+        }
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Kofi. All rights reserved.</p>
-    </footer>
+        .category-heading h2 {
+            margin: 0;
+            color: #FF6A00;
+            font-size: 24px;
+        }
 
-    <!-- This script makes the search button actually filter the menu items. -->
-    <script>
-        const searchForm = document.getElementById("menuSearchForm");
-        const searchInput = document.getElementById("menuSearch");
-        const clearButton = document.getElementById("clearSearch");
-        const searchMessage = document.getElementById("searchMessage");
-        const menuItems = document.querySelectorAll(".menu-item");
+        .category-heading p {
+            margin: 5px 0 0;
+            color: #cccccc;
+            font-size: 13px;
+        }
 
-        function searchMenu() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            let matches = 0;
+        /* ==============================
+           PRODUCT GRID
+        ============================== */
 
-            menuItems.forEach(function(item) {
-                const itemName = item.dataset.name.toLowerCase();
+        .category-products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
 
-                if (searchTerm === "" || itemName.includes(searchTerm)) {
-                    item.hidden = false;
-                    matches++;
-                } else {
-                    item.hidden = true;
-                }
-            });
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow: hidden;
+            background: #101010;
+            border: 1px solid #25345d;
+            border-radius: 13px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
 
-            if (searchTerm === "") {
-                searchMessage.textContent = "";
-            } else if (matches === 0) {
-                searchMessage.textContent = "No menu items found for: " + searchInput.value;
-            } else {
-                searchMessage.textContent = matches + " menu item(s) found.";
+        .menu-item:hover {
+            transform: translateY(-6px);
+            border-color: #FF6A00;
+            box-shadow: 0 8px 22px rgba(255, 106, 0, 0.14);
+        }
+
+        .menu-item img {
+            display: block;
+            width: 100%;
+            height: 185px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 18px;
+        }
+
+        .menu-item h3 {
+            margin: 0 0 10px;
+            color: #FF6A00;
+            font-size: 19px;
+        }
+
+        .menu-item p {
+            color: #dddddd;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .menu-item .product-price {
+            margin-top: auto;
+            padding-top: 10px;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .menu-item .btn {
+            width: 100%;
+            margin-top: 12px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-item .btn:hover {
+            background: #0647FF;
+        }
+
+        .menu-item .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* ==============================
+           SHOPPING CART - BOTTOM
+        ============================== */
+
+        #cartStatus {
+            margin-top: 55px;
+            padding: 28px;
+            background: linear-gradient(145deg, #030D2E, #101010);
+            border: 2px solid #0647FF;
+            border-radius: 15px;
+            scroll-margin-top: 100px;
+        }
+
+        .cart-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #35456d;
+            padding-bottom: 15px;
+        }
+
+        .cart-title-row h2 {
+            margin: 0;
+            color: #FF6A00;
+            font-size: 25px;
+        }
+
+        #cartItemCount {
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .cart-empty {
+            padding: 18px 0;
+            color: #cccccc;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid #35456d;
+        }
+
+        .cart-product-name {
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .cart-product-subtotal {
+            color: #FF6A00;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .cart-controls button {
+            padding: 7px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #0647FF;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-controls .remove-cart-item {
+            background: #FF6A00;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 22px 0;
+            font-size: 21px;
+        }
+
+        #cartTotal {
+            color: #FF6A00;
+        }
+
+        #checkoutButton {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #checkoutButton:hover:not(:disabled) {
+            background: #0647FF;
+        }
+
+        #checkoutButton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checkout-note {
+            color: #cccccc;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           IMAGE LIGHTBOX
+        ============================== */
+
+        #imageLightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.92);
+        }
+
+        #imageLightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+        }
+
+        #closeLightbox {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            width: 43px;
+            height: 43px;
+            border: none;
+            border-radius: 50%;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 1000px) {
+            .category-products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-        searchForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-            searchMenu();
-        });
+        @media (max-width: 800px) {
+            .menu-layout {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
 
-        clearButton.addEventListener("click", function() {
-            searchInput.value = "";
-            searchMenu();
-            searchInput.focus();
-        });
-    </script>
+            .menu-sidebar {
+                position: static;
+            }
+
+            .menu-sidebar a {
+                display: inline-block;
+                margin-right: 10px;
+                border: none;
+            }
+
+            .menu-banner h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .category-products {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-banner {
+                padding: 45px 15px;
+            }
+
+            .menu-banner h1 {
+                font-size: 29px;
+            }
+
+            #menuSearchForm {
+                flex-direction: column;
+            }
+
+            #menuSearchForm button,
+            #clearSearch {
+                width: 100%;
+            }
+
+            .category-heading h2 {
+                font-size: 20px;
+            }
+
+            #cartStatus {
+                padding: 18px;
+            }
+
+            .cart-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .menu-item img {
+                height: 210px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- WEBSITE HEADER -->
+
+    <header class="site-header">
+
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/logog.jpg"
+                     alt="Kofi Coffee Shop Logo"
+                     class="site-logo">
+            </a>
+        </div>
+
+        <nav class="main-navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html" aria-current="page">Our Menu</a>
+            <a href="enquiry.html">Enquiries</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </header>
+
+    <!-- MENU BANNER -->
+
+    <section class="menu-banner">
+
+        <h1>Our Menu</h1>
+
+        <p>
+            Discover your favourite coffee, refreshing drinks
+            and delicious snacks. There is something special
+            waiting for everyone at Kofi.
+        </p>
+
+    </section>
+
+    <!-- SEARCH AND SORT -->
+
+    <section class="menu-search-section">
+
+        <form id="menuSearchForm">
+
+            <input
+                type="search"
+                id="menuSearch"
+                placeholder="Search for coffee, drinks or snacks..."
+                aria-label="Search menu products">
+
+            <button type="submit">Search</button>
+
+            <button type="button" id="clearSearch">Clear</button>
+
+        </form>
+
+        <div class="search-options">
+
+            <label for="sortProducts">Sort products:</label>
+
+            <select id="sortProducts">
+                <option value="default">Default order</option>
+                <option value="name">Name: A to Z</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+            </select>
+
+        </div>
+
+        <p id="searchMessage" aria-live="polite">
+            Showing all products.
+        </p>
+
+    </section>
+
+    <p id="noProductsMessage" hidden>
+        Sorry, no products were found. Try another search.
+    </p>
+
+    <!-- MENU CONTENT -->
+
+    <main class="menu-layout">
+
+        <!-- CATEGORY SIDEBAR -->
+
+        <aside class="menu-sidebar">
+
+            <h2>Explore Menu</h2>
+
+            <a href="#coffeeSection">☕ Coffee</a>
+            <a href="#drinksSection">🥤 Other Drinks</a>
+            <a href="#snacksSection">🥐 Fresh Snacks</a>
+            <a href="#cartStatus">🛒 Shopping Cart</a>
+
+        </aside>
+
+        <div class="menu-content">
+
+            <div id="menuItems">
+
+                <!-- COFFEE CATEGORY -->
+
+                <section class="category-section" id="coffeeSection">
+
+                    <div class="category-heading">
+
+                        <span class="category-sticker">☕</span>
+
+                        <div>
+                            <h2>Fresh Coffee</h2>
+                            <p>Rich flavours, freshly prepared for you.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="category-products">
+
+                        <article class="menu-item"
+                                 data-name="Espresso"
+                                 data-price="25">
+
+                            <img src="images/espresso.jpg"
+                                 alt="Freshly prepared espresso"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Espresso</h3>
+                                <p>A rich and strong coffee made from freshly ground beans.</p>
+                                <p class="product-price">R25.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Cappuccino"
+                                 data-price="35">
+
+                            <img src="images/cappuccino.jpg"
+                                 alt="Creamy cappuccino"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Cappuccino</h3>
+                                <p>Espresso topped with steamed milk and creamy foam.</p>
+                                <p class="product-price">R35.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Americano"
+                                 data-price="30">
+
+                            <img src="images/americano.jpg"
+                                 alt="Fresh americano coffee"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Americano</h3>
+                                <p>A smooth espresso blended with hot water.</p>
+                                <p class="product-price">R30.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Cold Brew"
+                                 data-price="35">
+
+                            <img src="images/cold brew.jpg"
+                                 alt="Refreshing cold brew coffee"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Cold Brew</h3>
+                                <p>Slow-brewed coffee served chilled and refreshing.</p>
+                                <p class="product-price">R35.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <!-- OTHER DRINKS CATEGORY -->
+
+                <section class="category-section" id="drinksSection">
+
+                    <div class="category-heading">
+
+                        <span class="category-sticker">🥤</span>
+
+                        <div>
+                            <h2>Other Drinks</h2>
+                            <p>Refreshing favourites for every mood.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="category-products">
+
+                        <article class="menu-item"
+                                 data-name="Iced Coffee"
+                                 data-price="40">
+
+                            <img src="images/iced coffee.jpg"
+                                 alt="Iced coffee with milk"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Iced Coffee</h3>
+                                <p>A chilled coffee drink served over ice.</p>
+                                <p class="product-price">R40.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Hot Chocolate"
+                                 data-price="35">
+
+                            <img src="images/hot chocolate.jpg"
+                                 alt="Warm hot chocolate"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Hot Chocolate</h3>
+                                <p>A comforting chocolate drink with a creamy finish.</p>
+                                <p class="product-price">R35.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Matcha Latte"
+                                 data-price="40">
+
+                            <img src="images/matcha.jpg"
+                                 alt="Matcha latte"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Matcha Latte</h3>
+                                <p>A smooth green tea drink blended with milk.</p>
+                                <p class="product-price">R40.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <!-- FRESH SNACKS CATEGORY -->
+
+                <section class="category-section" id="snacksSection">
+
+                    <div class="category-heading">
+
+                        <span class="category-sticker">🥐</span>
+
+                        <div>
+                            <h2>Fresh Snacks</h2>
+                            <p>Delicious treats to enjoy with your drink.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="category-products">
+
+                        <article class="menu-item"
+                                 data-name="Croissant"
+                                 data-price="28">
+
+                            <img src="images/croissant.jpg"
+                                 alt="Fresh buttery croissant"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Croissant</h3>
+                                <p>A freshly baked, flaky and buttery pastry.</p>
+                                <p class="product-price">R28.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Chocolate Muffin"
+                                 data-price="30">
+
+                            <img src="images/muffin.jpg"
+                                 alt="Chocolate muffin"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Chocolate Muffin</h3>
+                                <p>A soft chocolate muffin perfect for a coffee break.</p>
+                                <p class="product-price">R30.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                        <article class="menu-item"
+                                 data-name="Chicken Sandwich"
+                                 data-price="55">
+
+                            <img src="images/sandwich.jpg"
+                                 alt="Fresh chicken sandwich"
+                                 loading="lazy">
+
+                            <div class="product-details">
+                                <h3>Chicken Sandwich</h3>
+                                <p>A delicious sandwich filled with chicken and fresh ingredients.</p>
+                                <p class="product-price">R55.00</p>
+                                <button class="btn" type="button">Add to Cart</button>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- SHOPPING CART: ONLY ONE, AT THE END -->
+
+            <section id="cartStatus"
+                     aria-label="Shopping cart"
+                     aria-live="polite">
+
+                <div class="cart-title-row">
+
+                    <h2>🛒 Your Shopping Cart</h2>
+
+                    <span id="cartItemCount">0 items</span>
+
+                </div>
+
+                <div id="cartItems">
+
+                    <p class="cart-empty">
+                        Your cart is currently empty. Add a product to get started.
+                    </p>
+
+                </div>
+
+                <div class="cart-total-row">
+
+                    <strong>Total:</strong>
+                    <strong id="cartTotal">R0.00</strong>
+
+                </div>
+
+                <button type="button" id="checkoutButton" disabled>
+                    Checkout
+                </button>
+
+                <p class="checkout-note">
+                    Demonstration checkout only. No payment is processed
+                    and no order is sent to the shop.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- PRODUCT IMAGE LIGHTBOX -->
+
+    <div id="imageLightbox" aria-hidden="true">
+
+        <button type="button"
+                id="closeLightbox"
+                aria-label="Close enlarged image">
+            &times;
+        </button>
+
+        <img src="" alt="Enlarged product image">
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>
+            &copy; <span id="copyrightYear"></span>
+            Kofi Coffee Shop. All rights reserved.
+        </p>
+    </footer>
 
 </body>
 </html>
-
-https://github.com/st10512081/kofi-webpage.git
