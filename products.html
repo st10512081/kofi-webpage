@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kofi - Products</title>
+</head>
+<body>
+
+    <!-- Header contains navigation so visitors can move between every page. -->
+    <header>
+        <h1>Kofi</h1>
+        <p>Fresh coffee, brewed with love.</p>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a> |
+            <a href="about.html">About us</a> |
+            <a href="products.html">Products</a> |
+            <a href="enquiry.html">Enquiry</a> |
+                <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <section>
+            <h2>Our Products</h2>
+            <p>
+                Search for a drink or snack below. For example, try
+                <strong>Espresso</strong>, <strong>Matcha</strong> or
+                <strong>Croissant</strong>.
+            </p>
+
+            <!-- The search form is connected to the JavaScript below so it filters menu items. -->
+            <form id="menuSearchForm">
+                <label for="menuSearch">Search Products:</label>
+                <input
+                    type="search"
+                    id="menuSearch"
+                    name="q"
+                    placeholder="e.g. Espresso"
+                    autocomplete="off"
+                >
+                <button type="submit">Search</button>
+                <button type="button" id="clearSearch">Clear</button>
+            </form>
+
+            <p id="searchMessage"></p>
+        </section>
+
+        <hr>
+
+        <section id="menuItems">
+            <h2>Hot Drinks</h2>
+
+            <article class="menu-item" data-name="espresso">
+                <img src="images/espresso.jpg" alt="Espresso" width="200">
+                <h3>Espresso</h3>
+                <p>Strong and rich coffee served in a small cup.</p>
+                <p><strong>Price: R25</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="cappuccino">
+                <img src="images/cappuccino.jpg" alt="Cappuccino" width="200">
+                <h3>Cappuccino</h3>
+                <p>Espresso combined with steamed milk and a layer of foam.</p>
+                <p><strong>Price: R35</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="americano">
+                <img src="images/Americano.jpg" alt="Americano" width="200">
+                <h3>Americano</h3>
+                <p>Espresso combined with hot water for a smooth coffee.</p>
+                <p><strong>Price: R30</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="hot chocolate">
+                <img src="images/Hot Chocolate.jpg" alt="Hot Chocolate" width="200">
+                <h3>Hot Chocolate</h3>
+                <p>A warm and comforting chocolate drink.</p>
+                <p><strong>Price: R32</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <h2>Cold Drinks</h2>
+
+            <article class="menu-item" data-name="iced coffee">
+                <img src="images/iced coffee.jpg" alt="Iced Coffee" width="200">
+                <h3>Iced Coffee</h3>
+                <p>Chilled coffee served as a refreshing cold drink.</p>
+                <p><strong>Price: R38</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="cold brew">
+                <img src="images/cold brew.jpg" alt="Cold Brew" width="200">
+                <h3>Cold Brew</h3>
+                <p>Smooth chilled coffee prepared for a refreshing taste.</p>
+                <p><strong>Price: R40</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="matcha">
+                <img src="images/matcha.jpg" alt="Matcha" width="200">
+                <h3>Matcha</h3>
+                <p>A smooth green tea drink with a distinctive flavour.</p>
+                <p><strong>Price: R42</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <h2>Snacks</h2>
+
+            <article class="menu-item" data-name="croissant">
+                <img src="images/Croissant.jpg" alt="Croissant" width="200">
+                <h3>Croissant</h3>
+                <p>A light and flaky pastry that pairs well with coffee.</p>
+                <p><strong>Price: R28</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="muffin">
+                <img src="images/Muffin.jpg" alt="Muffin" width="200">
+                <h3>Muffin</h3>
+                <p>A soft baked snack suitable for breakfast or a coffee break.</p>
+                <p><strong>Price: R25</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+
+            <hr>
+
+            <article class="menu-item" data-name="toasted sandwich">
+                <img src="images/sandwich.jpg" alt="Toasted Sandwich" width="200">
+                <h3>Toasted Sandwich</h3>
+                <p>A warm toasted sandwich for a more filling snack.</p>
+                <p><strong>Price: R45</strong></p>
+                <button type="button">Add to Cart</button>
+            </article>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Ordering Information</h2>
+            <p>
+                The search function filters the menu on this page. The
+                Add to Cart buttons are currently visual buttons only and
+                would require additional shopping-cart functionality.
+            </p>
+        </section>
+
+        <hr>
+
+        <p><a href="index.html">Back to Home</a></p>
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 Kofi. All rights reserved.</p>
+    </footer>
+
+    <!-- This script makes the search button actually filter the menu items. -->
+    <script>
+        const searchForm = document.getElementById("menuSearchForm");
+        const searchInput = document.getElementById("menuSearch");
+        const clearButton = document.getElementById("clearSearch");
+        const searchMessage = document.getElementById("searchMessage");
+        const menuItems = document.querySelectorAll(".menu-item");
+
+        function searchMenu() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let matches = 0;
+
+            menuItems.forEach(function(item) {
+                const itemName = item.dataset.name.toLowerCase();
+
+                if (searchTerm === "" || itemName.includes(searchTerm)) {
+                    item.hidden = false;
+                    matches++;
+                } else {
+                    item.hidden = true;
+                }
+            });
+
+            if (searchTerm === "") {
+                searchMessage.textContent = "";
+            } else if (matches === 0) {
+                searchMessage.textContent = "No menu items found for: " + searchInput.value;
+            } else {
+                searchMessage.textContent = matches + " menu item(s) found.";
+            }
+        }
+
+        searchForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            searchMenu();
+        });
+
+        clearButton.addEventListener("click", function() {
+            searchInput.value = "";
+            searchMenu();
+            searchInput.focus();
+        });
+    </script>
+
+</body>
+</html>
+
+https://github.com/st10512081/kofi-webpage.git

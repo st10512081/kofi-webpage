@@ -1,512 +1,402 @@
 
-/* ==========================================
-   KOFI COFFEE SHOP - PART 3 JAVASCRIPT
-   Search, sorting, cart, lightbox, FAQ,
-   enquiry form, contact form and map.
-========================================== */
+/* =========================================
+   KOFI COFFEE SHOP
+   Website JavaScript
+========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // ==========================================
-    // 1. PRODUCT SEARCH AND SORTING
-    // ==========================================
+    // 1. Automatic copyright year
+    const currentYear = new Date().getFullYear();
 
-    const products = [...document.querySelectorAll(".menu-item")];
+    [
+        "copyrightYear",
+        "homeCopyrightYear",
+        "enquiryCopyrightYear",
+        "contactCopyrightYear"
+    ].forEach(function (id) {
+        const element = document.getElementById(id);
 
-    const search = document.querySelector("#menuSearch");
-    const clear = document.querySelector("#clearSearch");
-    const sort = document.querySelector("#sortProducts");
-    const searchMessage = document.querySelector("#searchMessage");
-
-    function filterProducts() {
-
-        const term = (search?.value || "").trim().toLowerCase();
-        let visible = 0;
-
-        products.forEach(card => {
-
-            const matches = card.textContent.toLowerCase().includes(term);
-
-            card.hidden = !matches;
-
-            if (matches) visible++;
-
-        });
-
-        if (searchMessage) {
-            searchMessage.textContent =
-                `${visible} product${visible === 1 ? "" : "s"} found.`;
+        if (element) {
+            element.textContent = currentYear;
         }
+    });
+
+
+    // 2. Product search, filtering and sorting
+    const menuItems = document.getElementById("menuItems");
+    const searchInput = document.getElementById("menuSearch");
+    const clearSearch = document.getElementById("clearSearch");
+    const sortSelect = document.getElementById("sortProducts");
+    const searchMessage = document.getElementById("searchMessage");
+
+    if (menuItems) {
+
+        function getProducts() {
+            return Array.from(menuItems.querySelectorAll(".menu-item"));
+        }
+
+        function filterProducts() {
+            const searchTerm = searchInput
+                ? searchInput.value.trim().toLowerCase()
+                : "";
+
+            let visibleCount = 0;
+
+            getProducts().forEach(function (product) {
+                const productName = product.dataset.name ||
+                    product.textContent;
+
+                const matches = productName
+                    .toLowerCase()
+                    .includes(searchTerm);
+
+                product.hidden = !matches;
+
+                if (matches) {
+                    visibleCount++;
+                }
+            });
+
+            if (searchMessage) {
+                searchMessage.textContent = visibleCount +
+                    (visibleCount === 1
+                        ? " product found."
+                        : " products found.");
+            }
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener("input", filterProducts);
+        }
+
+        if (clearSearch) {
+            clearSearch.addEventListener("click", function () {
+                if (searchInput) {
+                    searchInput.value = "";
+                }
+
+                filterProducts();
+
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            });
+        }
+
+        if (sortSelect) {
+            sortSelect.addEventListener("change", function () {
+                const products = getProducts();
+
+                products.sort(function (a, b) {
+                    const nameA = (a.dataset.name || "").toLowerCase();
+                    const nameB = (b.dataset.name || "").toLowerCase();
+
+                    const priceA = Number(a.dataset.price || 0);
+                    const priceB = Number(b.dataset.price || 0);
+
+                    switch (sortSelect.value) {
+                        case "name":
+                            return nameA.localeCompare(nameB);
+
+                        case "price-low":
+                            return priceA - priceB;
+
+                        case "price-high":
+                            return priceB - priceA;
+
+                        default:
+                            return 0;
+                    }
+                });
+
+                products.forEach(function (product) {
+                    menuItems.appendChild(product);
+                });
+
+                filterProducts();
+            });
+        }
+
+        filterProducts();
     }
 
-    search?.addEventListener("input", filterProducts);
 
-    document.querySelector("#menuSearchForm")?.addEventListener("submit", event => {
+    // 3. Shopping cart demonstration
+    const cartStatus = document.getElementById("cartStatus");
 
-        event.preventDefault();
-        filterProducts();
+    let cartCount = 0;
+    let cartTotal = 0;
 
-    });
+    document.querySelectorAll(".menu-item").forEach(function (product) {
+        const addButton = product.querySelector("button");
 
-    clear?.addEventListener("click", () => {
-
-        if (search) {
-            search.value = "";
-            filterProducts();
-            search.focus();
+        if (!addButton) {
+            return;
         }
 
-    });
+        addButton.addEventListener("click", function () {
+            const price = Number(product.dataset.price || 0);
+            const productName = product.dataset.name || "Product";
 
-    sort?.addEventListener("change", () => {
-
-        const container = document.querySelector("#menuItems");
-
-        if (!container) return;
-
-        const sorted = [...products].sort((a, b) => {
-
-            const priceA = Number(a.dataset.price || 0);
-            const priceB = Number(b.dataset.price || 0);
-
-            if (sort.value === "price-low") {
-                return priceA - priceB;
+            if (!Number.isFinite(price) || price <= 0) {
+                return;
             }
 
-            if (sort.value === "price-high") {
-                return priceB - priceA;
+            cartCount++;
+            cartTotal += price;
+
+            if (cartStatus) {
+                cartStatus.textContent =
+                    productName + " added to your cart. " +
+                    "Items: " + cartCount +
+                    " | Total: R" + cartTotal.toFixed(2);
             }
-
-            const nameA = a.dataset.name || "";
-            const nameB = b.dataset.name || "";
-
-            return nameA.localeCompare(nameB);
-
         });
-
-        sorted.forEach(card => container.appendChild(card));
-
     });
 
 
-    // ==========================================
-    // 2. SHOPPING CART
-    // ==========================================
+    // 4. Product image lightbox
+    const lightbox = document.getElementById("imageLightbox");
 
-    const cart = [];
+    if (lightbox) {
+        const lightboxImage = lightbox.querySelector("img");
+        const closeButton = lightbox.querySelector("button");
+        let previousFocus = null;
 
-    const cartOutput = document.querySelector("#cartStatus");
-
-    products.forEach(card => {
-
-        const button = card.querySelector("button");
-
-        if (!button) return;
-
-        button.addEventListener("click", () => {
-
-            const name =
-                card.querySelector("h3")?.textContent.trim() || "Product";
-
-            const price = Number(card.dataset.price || 0);
-
-            cart.push({ name, price });
-
-            if (cartOutput) {
-
-                const total = cart.reduce(
-                    (sum, item) => sum + item.price,
-                    0
-                );
-
-                cartOutput.textContent =
-                    `Cart: ${cart.length} item(s) — Total R${total.toFixed(2)}`;
-
+        function openLightbox(image) {
+            if (!lightboxImage) {
+                return;
             }
 
-            button.textContent = "Added ✓";
-
-            setTimeout(() => {
-                button.textContent = "Add to Cart";
-            }, 1000);
-
-        });
-
-    });
-
-
-    // ==========================================
-    // 3. PRODUCT IMAGE LIGHTBOX
-    // ==========================================
-
-    const lightbox = document.querySelector("#imageLightbox");
-
-    const lightboxImage = lightbox?.querySelector("img");
-
-    const closeLightbox = () => {
-
-        if (lightbox) {
-
-            lightbox.hidden = true;
-            document.body.style.overflow = "";
-
-        }
-
-    };
-
-    products.forEach(card => {
-
-        const image = card.querySelector("img");
-
-        image?.addEventListener("click", () => {
-
-            if (!lightbox || !lightboxImage) return;
-
+            previousFocus = image;
             lightboxImage.src = image.src;
             lightboxImage.alt = image.alt;
 
-            lightbox.hidden = false;
+            lightbox.style.display = "flex";
+            lightbox.setAttribute("aria-hidden", "false");
 
-            document.body.style.overflow = "hidden";
-
-            lightbox.querySelector("button")?.focus();
-
-        });
-
-    });
-
-    lightbox?.querySelector("button")?.addEventListener(
-        "click",
-        closeLightbox
-    );
-
-    lightbox?.addEventListener("click", event => {
-
-        if (event.target === lightbox) {
-            closeLightbox();
+            if (closeButton) {
+                closeButton.focus();
+            }
         }
 
-    });
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            lightbox.setAttribute("aria-hidden", "true");
 
-    document.addEventListener("keydown", event => {
-
-        if (event.key === "Escape") {
-            closeLightbox();
-        }
-
-    });
-
-
-    // ==========================================
-    // 4. FAQ ACCORDION
-    // ==========================================
-
-    document.querySelectorAll(".accordion-trigger").forEach(trigger => {
-
-        trigger.addEventListener("click", () => {
-
-            const panel = document.getElementById(
-                trigger.getAttribute("aria-controls")
-            );
-
-            const expanded =
-                trigger.getAttribute("aria-expanded") === "true";
-
-            trigger.setAttribute(
-                "aria-expanded",
-                String(!expanded)
-            );
-
-            if (panel) {
-                panel.hidden = expanded;
+            if (lightboxImage) {
+                lightboxImage.removeAttribute("src");
             }
 
-        });
-
-    });
-
-
-    // ==========================================
-    // 5. ENQUIRY FORM
-    // ==========================================
-
-    const enquiry = document.querySelector("#enquiryForm");
-
-    const enquiryResponse = document.querySelector("#enquiryResponse");
-
-    const preferredDate = document.querySelector("#preferredDate");
-
-
-    // Automatically prevent visitors from selecting past dates.
-    if (preferredDate) {
-
-        const today = new Date();
-
-        const year = today.getFullYear();
-
-        const month = String(today.getMonth() + 1).padStart(2, "0");
-
-        const day = String(today.getDate()).padStart(2, "0");
-
-        preferredDate.min = `${year}-${month}-${day}`;
-
-    }
-
-
-    enquiry?.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        // Check the hidden honeypot field for spam.
-        const honeypot = document.querySelector("#website");
-
-        if (honeypot && honeypot.value.trim() !== "") {
-
-            if (enquiryResponse) {
-                enquiryResponse.textContent =
-                    "Your submission could not be processed.";
+            if (previousFocus) {
+                previousFocus.focus();
             }
-
-            return;
-
         }
 
-
-        // Check built-in HTML form validation.
-        if (!enquiry.reportValidity()) {
-            return;
-        }
-
-
-        // Read and validate the visitor's details.
-        const name = document.querySelector("#name")?.value.trim() || "";
-
-        const email = document.querySelector("#email")?.value.trim() || "";
-
-        const message = document.querySelector("#message")?.value.trim() || "";
-
-        const type = document.querySelector("#enquiryType")?.value || "";
-
-        const date = preferredDate?.value || "";
-
-
-        // Additional JavaScript validation.
-        if (name.length < 2 || email === "" || message.length < 10) {
-
-            if (enquiryResponse) {
-                enquiryResponse.textContent =
-                    "Please enter a valid name, email address and enquiry message.";
-            }
-
-            return;
-
-        }
-
-
-        // Display a response depending on the enquiry type.
-        let responseMessage;
-
-        if (type === "catering") {
-
-            responseMessage =
-                "Thank you! Catering availability and pricing depend on guest numbers and your selected date. Our team would need to confirm a quotation.";
-
-        } else if (type === "special-order") {
-
-            responseMessage =
-                "Thank you! Special orders depend on ingredient and preparation availability. Our team would need to confirm the details.";
-
-        } else {
-
-            responseMessage =
-                "Thank you for your enquiry! Our team would need to review your request and confirm availability.";
-
-        }
-
-
-        if (enquiryResponse) {
-
-            enquiryResponse.textContent =
-                responseMessage + (date ? ` Requested date: ${date}.` : "") +
-                " This demonstration form does not send enquiries yet.";
-
-        }
-
-    });
-
-
-    // Clear the enquiry response when the visitor resets the form.
-    enquiry?.addEventListener("reset", () => {
-
-        setTimeout(() => {
-
-            if (enquiryResponse) {
-                enquiryResponse.textContent = "";
-            }
-
-        }, 0);
-
-    });
-
-
-    // ==========================================
-    // 6. CONTACT FORM
-    // ==========================================
-
-    const contact = document.querySelector("#contactForm");
-
-    contact?.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        if (!contact.reportValidity()) {
-            return;
-        }
-
-        const get = id =>
-            document.getElementById(id)?.value.trim() || "";
-
-        const name = get("contactName");
-
-        const email = get("contactEmail");
-
-        const message = get("contactMessage");
-
-        const type = get("contactType");
-
-        const subjectText = get("contactSubject");
-
-
-        // Additional checks for empty spaces.
-        if (name.length < 2 || email === "" || message.length < 10) {
-
-            const response = document.querySelector("#contactResponse");
-
-            if (response) {
-                response.textContent =
-                    "Please check your name, email address and message.";
-            }
-
-            return;
-
-        }
-
-
-        const subject = encodeURIComponent(
-            `[Kofi website] ${type}: ${subjectText}`
-        );
-
-        const body = encodeURIComponent(
-            `Name: ${name}\n` +
-            `Email: ${email}\n` +
-            `Message type: ${type}\n\n` +
-            `${message}`
-        );
-
-
-        const response = document.querySelector("#contactResponse");
-
-        if (response) {
-
-            response.textContent =
-                "Your email application should open with your message prepared. Please review it and press Send.";
-
-        }
-
-        // Opens the visitor's default email application.
-        window.location.href =
-            `mailto:hello@kofi.co.za?subject=${subject}&body=${body}`;
-
-    });
-
-
-    // ==========================================
-    // 7. CONTACT PAGE INTERACTIVE MAP
-    // ==========================================
-
-    const mapElement = document.querySelector("#kofiMap");
-
-    if (mapElement) {
-
-        if (typeof L !== "undefined") {
-
-            const kofiMap = L.map("kofiMap").setView(
-                [-25.7475, 28.2135],
-                13
-            );
-
-            L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {
-                    attribution:
-                        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-
-                    maxZoom: 19
-                }
-            ).addTo(kofiMap);
-
-
-            // Approximate Pretoria Central area.
-            const pretoriaMarker = L.marker(
-                [-25.7460, 28.1880]
-            ).addTo(kofiMap);
-
-            pretoriaMarker.bindPopup(
-                "<strong>Kofi Main Store</strong><br>Pretoria Central, Gauteng."
-            );
-
-
-            // Approximate Hatfield area.
-            const hatfieldMarker = L.marker(
-                [-25.7460, 28.2380]
-            ).addTo(kofiMap);
-
-            hatfieldMarker.bindPopup(
-                "<strong>Kofi City Branch</strong><br>Hatfield, Pretoria."
-            );
-
-
-            const locationBounds = L.latLngBounds(
-                [-25.7460, 28.1880],
-                [-25.7460, 28.2380]
-            );
-
-            kofiMap.fitBounds(locationBounds, {
-                padding: [30, 30]
+        document.querySelectorAll(".menu-item img").forEach(function (image) {
+            image.addEventListener("click", function () {
+                openLightbox(image);
             });
 
-        } else {
+            image.setAttribute("tabindex", "0");
+            image.setAttribute("role", "button");
 
-            mapElement.textContent =
-                "The interactive map could not load. Please use the Google Maps links above.";
+            image.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openLightbox(image);
+                }
+            });
+        });
 
+        if (closeButton) {
+            closeButton.addEventListener("click", closeLightbox);
         }
 
+        lightbox.addEventListener("click", function (event) {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (
+                event.key === "Escape" &&
+                lightbox.style.display === "flex"
+            ) {
+                closeLightbox();
+            }
+        });
     }
 
 
-    // ==========================================
-    // 8. DYNAMIC COPYRIGHT YEAR
-    // ==========================================
+    // 5. FAQ accordion
+    document.querySelectorAll(".accordion-trigger").forEach(function (button) {
 
-    const copyrightIds = [
-        "copyrightYear",
-        "enquiryCopyrightYear",
-        "contactCopyrightYear"
-    ];
+        button.addEventListener("click", function () {
+            const panelId = button.getAttribute("aria-controls");
+            const panel = panelId
+                ? document.getElementById(panelId)
+                : null;
 
-    copyrightIds.forEach(id => {
+            if (!panel) {
+                return;
+            }
 
-        const yearElement = document.getElementById(id);
+            const isExpanded =
+                button.getAttribute("aria-expanded") === "true";
 
-        if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
-        }
+            button.setAttribute("aria-expanded", String(!isExpanded));
+            panel.hidden = isExpanded;
+        });
 
     });
 
-});
 
-// ==========================================
-// END OF KOFI PART 3 JAVASCRIPT
-// ==========================================
+    // 6. Enquiry form validation and response
+    const enquiryForm = document.getElementById("enquiryForm");
+
+    if (enquiryForm) {
+        const enquiryResponse =
+            document.getElementById("enquiryResponse");
+
+        const preferredDate =
+            document.getElementById("preferredDate");
+
+        if (preferredDate) {
+            const today = new Date();
+            const localDate = new Date(
+                today.getTime() - today.getTimezoneOffset() * 60000
+            ).toISOString().split("T")[0];
+
+            preferredDate.min = localDate;
+        }
+
+        enquiryForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!enquiryForm.reportValidity()) {
+                return;
+            }
+
+            const websiteField = document.getElementById("website");
+
+            // Honeypot spam check
+            if (websiteField && websiteField.value.trim() !== "") {
+                return;
+            }
+
+            const enquiryType =
+                document.getElementById("enquiryType");
+
+            const selectedType = enquiryType
+                ? enquiryType.value
+                : "";
+
+            const responses = {
+                menu: "Thank you for asking about our menu. Please contact Kofi for the latest menu and prices.",
+                catering: "Thank you for your catering enquiry. Our team will need to confirm availability and pricing.",
+                "special-order": "Thank you for your special-order enquiry. Please contact us to discuss your requirements.",
+                feedback: "Thank you for sharing your feedback with Kofi.",
+                volunteering: "Thank you for your interest. Please contact Kofi for more information.",
+                sponsorship: "Thank you for your sponsorship enquiry. Please contact our team for further discussion.",
+                other: "Thank you for contacting Kofi. Your enquiry has been prepared for review."
+            };
+
+            if (enquiryResponse) {
+                enquiryResponse.textContent =
+                    (responses[selectedType] ||
+                    "Thank you for your enquiry.") +
+                    " This is a demonstration form; your information has not been sent or saved.";
+            }
+
+            enquiryForm.reset();
+
+            if (preferredDate) {
+                const today = new Date();
+                preferredDate.min = new Date(
+                    today.getTime() - today.getTimezoneOffset() * 60000
+                ).toISOString().split("T")[0];
+            }
+        });
+    }
+
+
+    // 7. Contact form: prepare an email
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+        const contactResponse =
+            document.getElementById("contactResponse");
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!contactForm.reportValidity()) {
+                return;
+            }
+
+            const name = document.getElementById("contactName").value.trim();
+            const email = document.getElementById("contactEmail").value.trim();
+            const phone = document.getElementById("contactPhone");
+            const type = document.getElementById("contactType").value;
+            const subject = document.getElementById("contactSubject").value.trim();
+            const message = document.getElementById("contactMessage").value.trim();
+
+            const phoneValue = phone ? phone.value.trim() : "";
+
+            const emailSubject = encodeURIComponent(
+                subject || "Kofi Coffee Shop Contact Message"
+            );
+
+            const emailBody = encodeURIComponent(
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + (phoneValue || "Not provided") + "\n" +
+                "Message type: " + type + "\n\n" +
+                "Message:\n" + message
+            );
+
+            const recipient = "hello@kofi.co.za";
+
+            if (contactResponse) {
+                contactResponse.textContent =
+                    "Your email application should open. Please review the message and press Send. If it does not open, email " +
+                    recipient + " directly.";
+            }
+
+            window.location.href =
+                "mailto:" + recipient +
+                "?subject=" + emailSubject +
+                "&body=" + emailBody;
+        });
+    }
+
+
+    // 8. Contact map (requires Leaflet and verified coordinates)
+    const mapElement = document.getElementById("kofiMap");
+
+    if (mapElement && typeof L !== "undefined") {
+        // Replace these example coordinates with the verified
+        // physical location of Kofi Coffee Shop before publishing.
+        const latitude = -25.7479;
+        const longitude = 28.2293;
+
+        const map = L.map("kofiMap").setView(
+            [latitude, longitude],
+            14
+        );
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
+
+        L.marker([latitude, longitude])
+            .addTo(map)
+            .bindPopup("Kofi Coffee Shop")
+            .openPopup();
+    }
+
+});
+==========================

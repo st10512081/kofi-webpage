@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kofi | Contact</title>
+</head>
+<body>
+
+<header>
+    <h1>Contact Kofi</h1>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a> |
+        <a href="about.html">About us</a> |
+        <a href="products.html">Products</a> |
+        <a href="enquiry.html">Enquiry</a> |
+        <a href="contact.html">Contact</a>
+    
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Get in Touch</h2>
+        <p>We would love to hear from you.</p>
+
+        <address>
+            <strong>Email:</strong> <a href="mailto:hello@kofi.example">hello@kofi.example</a><br>
+            <strong>Phone:</strong> <a href="tel:+27123456789">+27 12 345 6789</a><br>
+            <strong>Opening Hours:</strong> Monday–Sunday, 07:00–18:00
+        </address>
+    </section>
+
+    <section>
+        <h2>Our Locations</h2>
+
+        <article>
+            <h3>Kofi Main Store – Pretoria Central</h3>
+            <p>Pretoria Central, Gauteng, South Africa</p>
+            <p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Pretoria+Central+Gauteng+South+Africa"
+                   target="_blank" rel="noopener">
+                    View location on Google Maps
+                </a>
+            </p>
+        </article>
+
+        <article>
+            <h3>Kofi City Branch – Hatfield</h3>
+            <p>Hatfield, Pretoria, Gauteng, South Africa</p>
+            <p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hatfield+Pretoria+Gauteng+South+Africa"
+                   target="_blank" rel="noopener">
+                    View location on Google Maps
+                </a>
+            </p>
+        </article>
+    </section>
+
+    <section>
+        <h2>Contact Form</h2>
+
+        <form id="contactForm">
+            <label for="contactName">Name:</label><br>
+            <input type="text" id="contactName" name="contactName" required><br><br>
+
+            <label for="contactEmail">Email:</label><br>
+            <input type="email" id="contactEmail" name="contactEmail" required><br><br>
+
+            <label for="contactSubject">Subject:</label><br>
+            <input type="text" id="contactSubject" name="contactSubject" required><br><br>
+
+            <label for="contactMessage">Message:</label><br>
+            <textarea id="contactMessage" name="contactMessage" rows="6" cols="50" required></textarea><br><br>
+
+            <button type="submit">Send Message</button>
+            <button type="reset">Clear</button>
+        </form>
+
+        <p id="contactResponse" aria-live="polite"></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Kofi Coffee Shop. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("contactName").value.trim();
+        document.getElementById("contactResponse").textContent =
+            "Thank you, " + name + ". Your message has been received.";
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
