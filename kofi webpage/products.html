@@ -6,56 +6,754 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Our Menu | Kofi Coffee Shop</title>
+    <!-- ================= SEO INFORMATION ================= -->
+
+    <title>Kofi Coffee Shop | Products, Coffee, Drinks and Snacks</title>
 
     <meta name="description"
-        content="Explore the Kofi Coffee Shop menu. Discover espresso, cappuccino, iced coffee, hot chocolate, croissants, muffins and sandwiches.">
+        content="Explore the Kofi Coffee Shop menu. Discover freshly prepared espresso, cappuccino, iced coffee, matcha, hot chocolate, croissants, muffins and delicious snacks.">
 
     <meta name="keywords"
-        content="Kofi menu, coffee prices, espresso, cappuccino, snacks, coffee shop">
+        content="Kofi Coffee Shop, coffee menu, espresso, cappuccino, americano, iced coffee, cold brew, matcha latte, hot chocolate, croissant, muffin, sandwiches">
 
+    <meta name="author" content="Kofi Coffee Shop">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Marobola Thabang">
-    <meta name="theme-color" content="#4b2e20">
+    <meta name="theme-color" content="#050505">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <meta property="og:title" content="Our Menu | Kofi Coffee Shop">
+    <!-- CANONICAL URL -->
+
+    <link rel="canonical"
+        href="https://st10512081.github.io/kofi-webpage/products.html">
+
+    <!-- ================= OPEN GRAPH ================= -->
+
+    <meta property="og:title"
+        content="Kofi Coffee Shop | Our Products and Menu">
+
     <meta property="og:description"
-        content="Explore our coffee, drinks and delicious snacks.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="images/snapiv.jpg">
+        content="Explore our selection of freshly prepared coffee, refreshing drinks and delicious snacks at Kofi Coffee Shop.">
 
-    <!-- CSS and JavaScript -->
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+        content="https://st10512081.github.io/kofi-webpage/products.html">
+
+    <meta property="og:site_name" content="Kofi Coffee Shop">
+
+    <meta property="og:image"
+        content="https://st10512081.github.io/kofi-webpage/images/snapiv.png">
+
+    <meta property="og:image:alt"
+        content="Kofi Coffee Shop products and freshly prepared coffee">
+
+    <!-- ================= TWITTER / X ================= -->
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="Kofi Coffee Shop | Our Products and Menu">
+
+    <meta name="twitter:description"
+        content="Discover coffee, refreshing drinks and delicious snacks at Kofi Coffee Shop.">
+
+    <meta name="twitter:image"
+        content="https://st10512081.github.io/kofi-webpage/images/snapiv.png">
+
+    <!-- ================= FAVICON ================= -->
+
+    <link rel="icon" type="image/jpeg" href="images/logog.jpg">
+
+    <!-- ================= CSS AND JAVASCRIPT ================= -->
+
     <link rel="stylesheet" href="style.css">
+
     <script src="script.js" defer></script>
+
+    <!-- ================= PAGE-SPECIFIC CSS ================= -->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        body {
+            margin: 0;
+            background: #050505;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ==============================
+           MENU INTRODUCTION
+        ============================== */
+
+        .menu-banner {
+            background: linear-gradient(120deg, #030D2E, #0647FF);
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .menu-banner h1 {
+            font-size: 42px;
+            margin: 0 0 12px;
+            color: #ffffff;
+        }
+
+        .menu-banner p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+            color: #eeeeee;
+        }
+
+        /* ==============================
+           SEARCH AND SORT
+        ============================== */
+
+        .menu-search-section {
+            max-width: 1050px;
+            margin: 35px auto 25px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        #menuSearchForm {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 10px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+        }
+
+        #menuSearch {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #0647FF;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #111111;
+            font-size: 15px;
+            outline: none;
+        }
+
+        #menuSearch:focus {
+            border-color: #FF6A00;
+            box-shadow: 0 0 8px rgba(255, 106, 0, 0.35);
+        }
+
+        #menuSearchForm button,
+        #clearSearch {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 9px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #menuSearchForm button:hover,
+        #clearSearch:hover {
+            background: #0647FF;
+        }
+
+        #menuSearchForm button:focus-visible,
+        #clearSearch:focus-visible,
+        #sortProducts:focus-visible {
+            outline: 3px solid #FF6A00;
+            outline-offset: 3px;
+        }
+
+        .search-submit-button {
+            min-width: 55px;
+            font-size: 20px;
+        }
+
+        /* AUTOCOMPLETE SUGGESTIONS */
+
+        .search-suggestions {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            max-height: 280px;
+            overflow-y: auto;
+            background: #ffffff;
+            border: 1px solid #0647FF;
+            border-radius: 9px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            text-align: left;
+        }
+
+        .search-suggestion {
+            display: block;
+            width: 100%;
+            padding: 13px 16px;
+            border: none !important;
+            border-bottom: 1px solid #eeeeee !important;
+            border-radius: 0 !important;
+            background: #ffffff !important;
+            color: #111111 !important;
+            font-size: 14px;
+            font-weight: normal !important;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .search-suggestion:hover,
+        .search-suggestion:focus {
+            background: #030D2E !important;
+            color: #ffffff !important;
+        }
+
+        .search-suggestion:last-child {
+            border-bottom: none !important;
+        }
+
+        .search-options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .search-options label {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        #sortProducts {
+            padding: 11px 15px;
+            border: 1px solid #0647FF;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #111111;
+            cursor: pointer;
+        }
+
+        #searchMessage {
+            margin: 16px 0 0;
+            color: #FF6A00;
+            font-size: 14px;
+        }
+
+        #noProductsMessage {
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 20px;
+            text-align: center;
+            color: #FF6A00;
+            background: #101010;
+            border: 1px solid #FF6A00;
+            border-radius: 10px;
+        }
+
+        /* ==============================
+           MENU LAYOUT
+        ============================== */
+
+        .menu-layout {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 25px auto 60px;
+            padding: 20px;
+            align-items: start;
+        }
+
+        /* ==============================
+           CATEGORY SIDEBAR
+        ============================== */
+
+        .menu-sidebar {
+            position: sticky;
+            top: 100px;
+            background: #030D2E;
+            border: 1px solid #0647FF;
+            border-radius: 13px;
+            padding: 22px;
+        }
+
+        .menu-sidebar h2 {
+            margin: 0 0 15px;
+            color: #FF6A00;
+            font-size: 21px;
+        }
+
+        .menu-sidebar a {
+            display: block;
+            padding: 13px 8px;
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.3s;
+        }
+
+        .menu-sidebar a:hover,
+        .menu-sidebar a:focus-visible {
+            color: #FF6A00;
+            padding-left: 14px;
+        }
+
+        /* ==============================
+           CATEGORY HEADINGS
+        ============================== */
+
+        .category-section {
+            margin-bottom: 48px;
+            scroll-margin-top: 100px;
+        }
+
+        .category-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding: 15px 18px;
+            background: linear-gradient(90deg, #030D2E, #101010);
+            border-left: 5px solid #FF6A00;
+            border-radius: 9px;
+        }
+
+        .category-sticker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            background: #ffffff;
+            border-radius: 50%;
+            font-size: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .category-heading h2 {
+            margin: 0;
+            color: #FF6A00;
+            font-size: 24px;
+        }
+
+        .category-heading p {
+            margin: 5px 0 0;
+            color: #cccccc;
+            font-size: 13px;
+        }
+
+        /* ==============================
+           PRODUCT GRID
+        ============================== */
+
+        .category-products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow: hidden;
+            background: #101010;
+            border: 1px solid #25345d;
+            border-radius: 13px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-6px);
+            border-color: #FF6A00;
+            box-shadow: 0 8px 22px rgba(255, 106, 0, 0.14);
+        }
+
+        .menu-item img {
+            display: block;
+            width: 100%;
+            height: 185px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 18px;
+        }
+
+        .menu-item h3 {
+            margin: 0 0 10px;
+            color: #FF6A00;
+            font-size: 19px;
+        }
+
+        .menu-item p {
+            color: #dddddd;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .menu-item .product-price {
+            margin-top: auto;
+            padding-top: 10px;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .menu-item .btn {
+            width: 100%;
+            margin-top: 12px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-item .btn:hover {
+            background: #0647FF;
+        }
+
+        .menu-item .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .menu-item .btn:focus-visible,
+        #checkoutButton:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        /* ==============================
+           SHOPPING CART
+        ============================== */
+
+        #cartStatus {
+            margin-top: 55px;
+            padding: 28px;
+            background: linear-gradient(145deg, #030D2E, #101010);
+            border: 2px solid #0647FF;
+            border-radius: 15px;
+            scroll-margin-top: 100px;
+        }
+
+        .cart-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #35456d;
+            padding-bottom: 15px;
+        }
+
+        .cart-title-row h2 {
+            margin: 0;
+            color: #FF6A00;
+            font-size: 25px;
+        }
+
+        #cartItemCount {
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .cart-empty {
+            padding: 18px 0;
+            color: #cccccc;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid #35456d;
+        }
+
+        .cart-product-name {
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .cart-product-subtotal {
+            color: #FF6A00;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .cart-controls button {
+            padding: 7px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #0647FF;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-controls .remove-cart-item {
+            background: #FF6A00;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 22px 0;
+            font-size: 21px;
+        }
+
+        #cartTotal {
+            color: #FF6A00;
+        }
+
+        #checkoutButton {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #checkoutButton:hover:not(:disabled) {
+            background: #0647FF;
+        }
+
+        #checkoutButton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checkout-note {
+            color: #cccccc;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           IMAGE LIGHTBOX
+        ============================== */
+
+        #imageLightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.92);
+        }
+
+        #imageLightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+        }
+
+        #closeLightbox {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            width: 43px;
+            height: 43px;
+            border: none;
+            border-radius: 50%;
+            background: #FF6A00;
+            color: #ffffff;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        #closeLightbox:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 1000px) {
+            .category-products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 800px) {
+            .menu-layout {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .menu-sidebar {
+                position: static;
+            }
+
+            .menu-sidebar a {
+                display: inline-block;
+                margin-right: 10px;
+                border: none;
+            }
+
+            .menu-banner h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .category-products {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-banner {
+                padding: 45px 15px;
+            }
+
+            .menu-banner h1 {
+                font-size: 29px;
+            }
+
+            #menuSearchForm {
+                flex-wrap: wrap;
+            }
+
+            .search-input-wrapper {
+                flex-basis: 100%;
+            }
+
+            #menuSearchForm button,
+            #clearSearch {
+                flex: 1;
+            }
+
+            .category-heading h2 {
+                font-size: 20px;
+            }
+
+            #cartStatus {
+                padding: 18px;
+            }
+
+            .cart-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .menu-item img {
+                height: 210px;
+            }
+        }
+
+        /* REDUCED MOTION ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <!-- Website Header -->
+    <!-- ================= WEBSITE HEADER ================= -->
+
     <header class="site-header">
 
         <div class="header-container">
 
-            <!-- Kofi Logo -->
-            <a href="index.html" class="logo-link">
-                <img src="images/logog.jpg"
-                     alt="Kofi Coffee Shop logo"
-                     class="site-logo">
+            <!-- KOFI LOGO -->
+
+            <a href="index.html"
+               class="logo-link"
+               aria-label="Kofi Coffee Shop homepage">
+
+                <img
+                    src="images/logog.jpg"
+                    alt="Kofi Coffee Shop logo"
+                    class="site-logo"
+                    decoding="async">
+
             </a>
 
-            <!-- Navigation -->
+            <!-- MAIN NAVIGATION -->
+
             <nav class="main-navigation" aria-label="Main navigation">
 
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+
                     <li>
                         <a href="products.html" aria-current="page">
-                            Our Menu
+                            Products
                         </a>
                     </li>
-                    <li><a href="enquiry.html">Enquiries</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+
+                    <li>
+                        <a href="enquiry.html">Enquiries</a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+
                 </ul>
 
             </nav>
@@ -64,376 +762,656 @@
 
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content">
+    <!-- ================= MENU BANNER ================= -->
 
-        <!-- Menu Banner -->
-        <section class="page-banner">
+    <section class="menu-banner">
 
-            <p class="section-subtitle">FRESHLY PREPARED FOR YOU</p>
+        <h1>Our Menu</h1>
 
-            <h1>Our Menu</h1>
+        <p>
+            Discover your favourite coffee, refreshing drinks
+            and delicious snacks. There is something special
+            waiting for everyone at Kofi.
+        </p>
 
-            <p>
-                Discover your favourite coffee, drinks and treats.
-            </p>
+    </section>
 
-        </section>
+    <!-- ================= SEARCH AND SORT ================= -->
 
-        <!-- Menu Products -->
-        <section class="page-content">
+    <section class="menu-search-section"
+             aria-label="Search and sort products">
 
-            <div class="section-heading">
+        <form id="menuSearchForm"
+              role="search"
+              autocomplete="off">
 
-                <p class="section-subtitle">EXPLORE OUR SELECTION</p>
+            <div class="search-input-wrapper">
 
-                <h2>Something Delicious Awaits</h2>
+                <input
+                    type="search"
+                    id="menuSearch"
+                    name="q"
+                    placeholder="Search for coffee, drinks or snacks..."
+                    aria-label="Search menu products"
+                    aria-autocomplete="list"
+                    aria-controls="searchSuggestions">
 
-                <p>
-                    Browse our menu and choose something special
-                    for your next coffee break.
-                </p>
+                <!-- AUTOCOMPLETE SUGGESTIONS -->
 
-            </div>
-
-            <!-- Search and Sorting -->
-            <div class="menu-controls">
-
-                <form id="menuSearchForm" role="search">
-
-                    <label for="menuSearch">
-                        Search our menu
-                    </label>
-
-                    <input
-                        type="search"
-                        id="menuSearch"
-                        placeholder="Search coffee or snacks..."
-                        aria-label="Search menu products">
-
-                    <button
-                        type="button"
-                        id="clearSearch"
-                        class="btn btn-secondary">
-                        Clear Search
-                    </button>
-
-                </form>
-
-                <div>
-
-                    <label for="sortProducts">
-                        Sort products:
-                    </label>
-
-                    <select id="sortProducts">
-
-                        <option value="name">Name (A-Z)</option>
-
-                        <option value="price-low">
-                            Price: Low to High
-                        </option>
-
-                        <option value="price-high">
-                            Price: High to Low
-                        </option>
-
-                    </select>
-
+                <div
+                    id="searchSuggestions"
+                    class="search-suggestions"
+                    role="listbox"
+                    aria-label="Product suggestions"
+                    hidden>
                 </div>
 
             </div>
 
-            <p id="searchMessage" aria-live="polite"></p>
+            <button
+                type="submit"
+                class="search-submit-button"
+                aria-label="Search products"
+                title="Search products">
 
-            <!-- Shopping Cart -->
-            <div class="content-card cart-section">
+                🔍
 
-                <h2>Your Shopping Cart</h2>
-
-                <p id="cartStatus" aria-live="polite">
-                    Your cart is empty. Add a product to get started.
-                </p>
-
-                <p>
-                    <small>
-                        This is a demonstration cart. It does not process
-                        payments or place real orders.
-                    </small>
-                </p>
-
-            </div>
-
-            <!-- Product List -->
-            <div id="menuItems" class="products-grid">
-
-                <!-- Espresso -->
-                <article class="menu-item"
-                    data-name="Espresso"
-                    data-price="25">
-
-                    <img src="images/espresso.jpg"
-                        alt="A freshly prepared espresso coffee"
-                        loading="lazy">
-
-                    <h3>Espresso</h3>
-
-                    <p>
-                        A rich, bold coffee with a smooth finish.
-                    </p>
-
-                    <p class="price">R25.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Cappuccino -->
-                <article class="menu-item"
-                    data-name="Cappuccino"
-                    data-price="35">
-
-                    <img src="images/cappuccino.jpg"
-                        alt="Cappuccino topped with creamy milk foam"
-                        loading="lazy">
-
-                    <h3>Cappuccino</h3>
-
-                    <p>
-                        Espresso blended with steamed milk and foam.
-                    </p>
-
-                    <p class="price">R35.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Americano -->
-                <article class="menu-item"
-                    data-name="Americano"
-                    data-price="30">
-
-                    <img src="images/americano.jpg"
-                        alt="Freshly prepared Americano coffee"
-                        loading="lazy">
-
-                    <h3>Americano</h3>
-
-                    <p>
-                        A smooth espresso-based coffee with hot water.
-                    </p>
-
-                    <p class="price">R30.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Iced Coffee -->
-                <article class="menu-item"
-                    data-name="Iced Coffee"
-                    data-price="40">
-
-                    <img src="images/iced coffee.jpg"
-                        alt="Refreshing iced coffee served cold"
-                        loading="lazy">
-
-                    <h3>Iced Coffee</h3>
-
-                    <p>
-                        A refreshing chilled coffee for warm days.
-                    </p>
-
-                    <p class="price">R40.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Hot Chocolate -->
-                <article class="menu-item"
-                    data-name="Hot Chocolate"
-                    data-price="35">
-
-                    <img src="images/hot chocolate.jpg"
-                        alt="Warm and creamy hot chocolate"
-                        loading="lazy">
-
-                    <h3>Hot Chocolate</h3>
-
-                    <p>
-                        A comforting chocolate drink topped with foam.
-                    </p>
-
-                    <p class="price">R35.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Croissant -->
-                <article class="menu-item"
-                    data-name="Croissant"
-                    data-price="28">
-
-                    <img src="images/croissant.jpg"
-                        alt="Fresh golden baked croissant"
-                        loading="lazy">
-
-                    <h3>Croissant</h3>
-
-                    <p>
-                        A light, buttery pastry baked until golden.
-                    </p>
-
-                    <p class="price">R28.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Chocolate Muffin -->
-                <article class="menu-item"
-                    data-name="Chocolate Muffin"
-                    data-price="30">
-
-                    <img src="images/muffin.jpg"
-                        alt="Fresh chocolate muffin"
-                        loading="lazy">
-
-                    <h3>Chocolate Muffin</h3>
-
-                    <p>
-                        A soft and delicious chocolate treat.
-                    </p>
-
-                    <p class="price">R30.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-                <!-- Chicken Sandwich -->
-                <article class="menu-item"
-                    data-name="Chicken Sandwich"
-                    data-price="55">
-
-                    <img src="images/sandwich.jpg"
-                        alt="Fresh chicken sandwich"
-                        loading="lazy">
-
-                    <h3>Chicken Sandwich</h3>
-
-                    <p>
-                        A tasty sandwich prepared for a satisfying meal.
-                    </p>
-
-                    <p class="price">R55.00</p>
-
-                    <button type="button" class="btn btn-primary">
-                        Add to Cart
-                    </button>
-
-                </article>
-
-            </div>
-
-            <p id="noProductsMessage" hidden>
-                No products found. Try another search.
-            </p>
-
-            <!-- Enquiry Button -->
-            <div class="section-button">
-
-                <a href="enquiry.html" class="btn btn-primary">
-                    Make an Enquiry
-                </a>
-
-            </div>
-
-        </section>
-
-        <!-- Image Lightbox -->
-        <div id="imageLightbox"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Enlarged product image"
-            aria-hidden="true"
-            hidden>
-
-            <button type="button" aria-label="Close enlarged image">
-                &times;
             </button>
 
-            <img src="" alt="">
+            <button type="button" id="clearSearch">
+                Clear
+            </button>
+
+        </form>
+
+        <div class="search-options">
+
+            <label for="sortProducts">
+                Sort products:
+            </label>
+
+            <select id="sortProducts">
+
+                <option value="default">Default order</option>
+                <option value="name">Name: A to Z</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+
+            </select>
+
+        </div>
+
+        <p id="searchMessage" aria-live="polite">
+            Showing all products.
+        </p>
+
+    </section>
+
+    <p id="noProductsMessage" hidden>
+        Sorry, no products were found. Try another search.
+    </p>
+
+    <!-- ================= MENU CONTENT ================= -->
+
+    <main id="main-content" class="menu-layout">
+
+        <!-- CATEGORY SIDEBAR -->
+
+        <aside class="menu-sidebar"
+               aria-label="Menu categories">
+
+            <h2>Explore Menu</h2>
+
+            <a href="#coffeeSection">☕ Coffee</a>
+            <a href="#drinksSection">🥤 Other Drinks</a>
+            <a href="#snacksSection">🥐 Fresh Snacks</a>
+            <a href="#cartStatus">🛒 Shopping Cart</a>
+
+        </aside>
+
+        <div class="menu-content">
+
+            <div id="menuItems">
+
+                <!-- ================= COFFEE CATEGORY ================= -->
+
+                <section class="category-section"
+                         id="coffeeSection">
+
+                    <div class="category-heading">
+
+                        <span class="category-sticker"
+                              aria-hidden="true">☕</span>
+
+                        <div>
+
+                            <h2>Fresh Coffee</h2>
+
+                            <p>
+                                Rich flavours, freshly prepared for you.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="category-products">
+
+                        <!-- ESPRESSO -->
+
+                        <article class="menu-item"
+                                 data-name="Espresso"
+                                 data-price="25">
+
+                            <img
+                                src="images/espresso.jpg"
+                                alt="Freshly prepared espresso"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Espresso</h3>
+
+                                <p>
+                                    A rich and strong coffee made from
+                                    freshly ground beans.
+                                </p>
+
+                                <p class="product-price">R25.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- CAPPUCCINO -->
+
+                        <article class="menu-item"
+                                 data-name="Cappuccino"
+                                 data-price="35">
+
+                            <img
+                                src="images/cappuccino.jpg"
+                                alt="Creamy cappuccino"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Cappuccino</h3>
+
+                                <p>
+                                    Espresso topped with steamed milk
+                                    and creamy foam.
+                                </p>
+
+                                <p class="product-price">R35.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- AMERICANO -->
+
+                        <article class="menu-item"
+                                 data-name="Americano"
+                                 data-price="30">
+
+                            <img
+                                src="images/Americano.jpg"
+                                alt="Fresh americano coffee"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Americano</h3>
+
+                                <p>
+                                    A smooth espresso blended with hot water.
+                                </p>
+
+                                <p class="product-price">R30.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- COLD BREW -->
+
+                        <article class="menu-item"
+                                 data-name="Cold Brew"
+                                 data-price="35">
+
+                            <img
+                                src="images/cold brew.jpg"
+                                alt="Refreshing cold brew coffee"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Cold Brew</h3>
+
+                                <p>
+                                    Slow-brewed coffee served chilled
+                                    and refreshing.
+                                </p>
+
+                                <p class="product-price">R35.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <!-- ================= OTHER DRINKS CATEGORY ================= -->
+
+                <section class="category-section"
+                         id="drinksSection">
+
+                    <div class="category-heading">
+
+                        <span class="category-sticker"
+                              aria-hidden="true">🥤</span>
+
+                        <div>
+
+                            <h2>Other Drinks</h2>
+
+                            <p>
+                                Refreshing favourites for every mood.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="category-products">
+
+                        <!-- ICED COFFEE -->
+
+                        <article class="menu-item"
+                                 data-name="Iced Coffee"
+                                 data-price="40">
+
+                            <img
+                                src="images/iced coffee.jpg"
+                                alt="Iced coffee with milk"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Iced Coffee</h3>
+
+                                <p>
+                                    A chilled coffee drink served over ice.
+                                </p>
+
+                                <p class="product-price">R40.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- HOT CHOCOLATE -->
+
+                        <article class="menu-item"
+                                 data-name="Hot Chocolate"
+                                 data-price="35">
+
+                            <img
+                                src="images/Hot Chocolate.jpg"
+                                alt="Warm hot chocolate"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Hot Chocolate</h3>
+
+                                <p>
+                                    A comforting chocolate drink with
+                                    a creamy finish.
+                                </p>
+
+                                <p class="product-price">R35.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- MATCHA LATTE -->
+
+                        <article class="menu-item"
+                                 data-name="Matcha Latte"
+                                 data-price="40">
+
+                            <img
+                                src="images/matcha.jpg"
+                                alt="Matcha latte"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Matcha Latte</h3>
+
+                                <p>
+                                    A smooth green tea drink blended with milk.
+                                </p>
+
+                                <p class="product-price">R40.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <!-- ================= FRESH SNACKS CATEGORY ================= -->
+
+                <section class="category-section"
+                         id="snacksSection">
+
+                    <div class="category-heading">
+
+                        <span class="category-sticker"
+                              aria-hidden="true">🥐</span>
+
+                        <div>
+
+                            <h2>Fresh Snacks</h2>
+
+                            <p>
+                                Delicious treats to enjoy with your drink.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="category-products">
+
+                        <!-- CROISSANT -->
+
+                        <article class="menu-item"
+                                 data-name="Croissant"
+                                 data-price="28">
+
+                            <img
+                                src="images/Croissant.jpg"
+                                alt="Fresh buttery croissant"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Croissant</h3>
+
+                                <p>
+                                    A freshly baked, flaky and buttery pastry.
+                                </p>
+
+                                <p class="product-price">R28.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- CHOCOLATE MUFFIN -->
+
+                        <article class="menu-item"
+                                 data-name="Chocolate Muffin"
+                                 data-price="30">
+
+                            <img
+                                src="images/Muffin.jpg"
+                                alt="Chocolate muffin"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Chocolate Muffin</h3>
+
+                                <p>
+                                    A soft chocolate muffin perfect
+                                    for a coffee break.
+                                </p>
+
+                                <p class="product-price">R30.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                        <!-- CHICKEN SANDWICH -->
+
+                        <article class="menu-item"
+                                 data-name="Chicken Sandwich"
+                                 data-price="55">
+
+                            <img
+                                src="images/sandwich.jpg"
+                                alt="Fresh chicken sandwich"
+                                loading="lazy"
+                                decoding="async">
+
+                            <div class="product-details">
+
+                                <h3>Chicken Sandwich</h3>
+
+                                <p>
+                                    A delicious sandwich filled with
+                                    chicken and fresh ingredients.
+                                </p>
+
+                                <p class="product-price">R55.00</p>
+
+                                <button class="btn" type="button">
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- ================= SHOPPING CART ================= -->
+
+            <section id="cartStatus"
+                     aria-label="Shopping cart"
+                     aria-live="polite">
+
+                <div class="cart-title-row">
+
+                    <h2>🛒 Your Shopping Cart</h2>
+
+                    <span id="cartItemCount">
+                        0 items
+                    </span>
+
+                </div>
+
+                <div id="cartItems">
+
+                    <p class="cart-empty">
+                        Your cart is currently empty.
+                        Add a product to get started.
+                    </p>
+
+                </div>
+
+                <div class="cart-total-row">
+
+                    <strong>Total:</strong>
+
+                    <strong id="cartTotal">
+                        R0.00
+                    </strong>
+
+                </div>
+
+                <button type="button"
+                        id="checkoutButton"
+                        disabled>
+
+                    Checkout
+
+                </button>
+
+                <p class="checkout-note">
+                    Demonstration checkout only. No payment is processed
+                    and no order is sent to the shop.
+                </p>
+
+            </section>
 
         </div>
 
     </main>
 
-    <!-- Website Footer -->
+    <!-- ================= PRODUCT IMAGE LIGHTBOX ================= -->
+
+    <div id="imageLightbox"
+         aria-hidden="true"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Enlarged product image">
+
+        <button
+            type="button"
+            id="closeLightbox"
+            aria-label="Close enlarged image">
+
+            &times;
+
+        </button>
+
+        <img src=""
+             alt="Enlarged product image">
+
+    </div>
+
+    <!-- ================= WEBSITE FOOTER ================= -->
+
     <footer class="site-footer">
 
-        <div class="footer-content">
+        <div class="footer-container">
 
-            <div class="footer-brand">
+            <div class="footer-content">
 
-                <h2>Kofi Coffee Shop</h2>
+                <div class="footer-brand">
 
-                <p>Good Coffee. Good Mood.</p>
+                    <h3>Kofi Coffee Shop</h3>
+
+                    <p>
+                        Good Coffee. Good Mood.
+                        Every cup is made with care.
+                    </p>
+
+                </div>
+
+                <div class="footer-links">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="products.html">Products</a>
+                    <a href="enquiry.html">Enquiry</a>
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+                <div class="footer-contact">
+
+                    <h3>Contact Information</h3>
+
+                    <p>
+                        Email:
+                        <a href="mailto:hello@kofi.co.za">
+                            hello@kofi.co.za
+                        </a>
+                    </p>
+
+                    <p>
+                        Phone:
+                        <a href="tel:+27123456789">
+                            +27 12 345 6789
+                        </a>
+                    </p>
+
+                </div>
 
             </div>
 
-            <div class="footer-links">
+            <div class="footer-bottom">
 
-                <h3>Quick Links</h3>
+                <p>
+                    &copy;
+                    <span id="copyrightYear"></span>
+                    Kofi Coffee Shop. All rights reserved.
+                </p>
 
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Our Menu</a>
-                <a href="enquiry.html">Enquiries</a>
-                <a href="contact.html">Contact</a>
-
-            </div>
-
-            <div class="footer-contact">
-
-                <h3>Contact Us</h3>
-
-                <p>Email: hello@kofi.co.za</p>
-
-                <p>Phone: +27 12 345 6789</p>
+                <p>
+                    Good Coffee. Good Mood.
+                </p>
 
             </div>
-
-        </div>
-
-        <div class="footer-bottom">
-
-            <p>
-                &copy;
-                <span id="copyrightYear"></span>
-                Kofi Coffee Shop. All rights reserved.
-            </p>
 
         </div>
 
     </footer>
 
 </body>
+
 </html>
