@@ -11,6 +11,12 @@
     <meta name="description"
         content="Explore the Kofi Coffee Shop menu. Enjoy freshly prepared coffee, refreshing drinks and delicious snacks.">
 
+    <meta name="keywords"
+        content="Kofi Coffee Shop, coffee, espresso, cappuccino, iced coffee, snacks, croissant">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#050505">
+
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 
@@ -67,14 +73,20 @@
         #menuSearchForm {
             display: flex;
             justify-content: center;
+            align-items: stretch;
             gap: 10px;
             max-width: 750px;
             margin: auto;
         }
 
-        #menuSearch {
+        .search-input-wrapper {
+            position: relative;
             flex: 1;
             min-width: 0;
+        }
+
+        #menuSearch {
+            width: 100%;
             padding: 14px 16px;
             border: 2px solid #0647FF;
             border-radius: 9px;
@@ -104,6 +116,53 @@
         #menuSearchForm button:hover,
         #clearSearch:hover {
             background: #0647FF;
+        }
+
+        .search-submit-button {
+            min-width: 55px;
+            font-size: 20px;
+        }
+
+        /* AUTOCOMPLETE SUGGESTIONS */
+
+        .search-suggestions {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            max-height: 280px;
+            overflow-y: auto;
+            background: #ffffff;
+            border: 1px solid #0647FF;
+            border-radius: 9px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            text-align: left;
+        }
+
+        .search-suggestion {
+            display: block;
+            width: 100%;
+            padding: 13px 16px;
+            border: none !important;
+            border-bottom: 1px solid #eeeeee !important;
+            border-radius: 0 !important;
+            background: #ffffff !important;
+            color: #111111 !important;
+            font-size: 14px;
+            font-weight: normal !important;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .search-suggestion:hover,
+        .search-suggestion:focus {
+            background: #030D2E !important;
+            color: #ffffff !important;
+        }
+
+        .search-suggestion:last-child {
+            border-bottom: none !important;
         }
 
         .search-options {
@@ -324,7 +383,7 @@
         }
 
         /* ==============================
-           SHOPPING CART - BOTTOM
+           SHOPPING CART
         ============================== */
 
         #cartStatus {
@@ -529,12 +588,16 @@
             }
 
             #menuSearchForm {
-                flex-direction: column;
+                flex-wrap: wrap;
+            }
+
+            .search-input-wrapper {
+                flex-basis: 100%;
             }
 
             #menuSearchForm button,
             #clearSearch {
-                width: 100%;
+                flex: 1;
             }
 
             .category-heading h2 {
@@ -600,17 +663,40 @@
 
     <section class="menu-search-section">
 
-        <form id="menuSearchForm">
+        <form id="menuSearchForm" role="search" autocomplete="off">
 
-            <input
-                type="search"
-                id="menuSearch"
-                placeholder="Search for coffee, drinks or snacks..."
-                aria-label="Search menu products">
+            <div class="search-input-wrapper">
 
-            <button type="submit">Search</button>
+                <input
+                    type="search"
+                    id="menuSearch"
+                    name="q"
+                    placeholder="Search for coffee, drinks or snacks..."
+                    aria-label="Search menu products"
+                    aria-autocomplete="list"
+                    aria-controls="searchSuggestions">
 
-            <button type="button" id="clearSearch">Clear</button>
+                <!-- AUTOCOMPLETE SUGGESTIONS -->
+
+                <div id="searchSuggestions"
+                     class="search-suggestions"
+                     role="listbox"
+                     aria-label="Product suggestions"
+                     hidden>
+                </div>
+
+            </div>
+
+            <button type="submit"
+                    class="search-submit-button"
+                    aria-label="Search products"
+                    title="Search products">
+                🔍
+            </button>
+
+            <button type="button" id="clearSearch">
+                Clear
+            </button>
 
         </form>
 
@@ -893,7 +979,7 @@
 
             </div>
 
-            <!-- SHOPPING CART: ONLY ONE, AT THE END -->
+            <!-- SHOPPING CART -->
 
             <section id="cartStatus"
                      aria-label="Shopping cart"
@@ -939,7 +1025,11 @@
 
     <!-- PRODUCT IMAGE LIGHTBOX -->
 
-    <div id="imageLightbox" aria-hidden="true">
+    <div id="imageLightbox"
+         aria-hidden="true"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Enlarged product image">
 
         <button type="button"
                 id="closeLightbox"
@@ -953,11 +1043,15 @@
 
     <!-- FOOTER -->
 
-    <footer>
+    <footer class="site-footer">
+
         <p>
             &copy; <span id="copyrightYear"></span>
             Kofi Coffee Shop. All rights reserved.
         </p>
+
+        <p>Good Coffee. Good Mood.</p>
+
     </footer>
 
 </body>

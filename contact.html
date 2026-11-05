@@ -15,8 +15,15 @@
         content="Kofi Coffee Shop, contact Kofi, coffee shop Pretoria, coffee shop Polokwane">
 
     <meta name="author" content="Kofi Coffee Shop">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#4b2e24">
 
-    <link rel="icon" type="image/jpg" href="images/logog.jpg">
+    <meta property="og:title" content="Contact Us | Kofi Coffee Shop">
+    <meta property="og:description"
+        content="Get in touch with Kofi Coffee Shop for customer support, product enquiries and general information.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/jpeg" href="images/logog.jpg">
     <link rel="stylesheet" href="style.css">
 
     <script src="script.js" defer></script>
@@ -30,9 +37,8 @@
 
         <div class="header-container">
 
-            <!-- Original Logo Image -->
+            <!-- Kofi Logo -->
 
-           <!-- Kofi Logo: top-left corner -->
             <a href="index.html" class="logo-link">
                 <img src="images/logog.jpg"
                      alt="Kofi Coffee Shop logo"
@@ -43,15 +49,17 @@
 
             <nav class="main-navigation" aria-label="Main navigation">
 
-                <a href="index.html">Home</a>
-
-                <a href="about.html">About Us</a>
-
-                <a href="products.html">Products</a>
-
-                <a href="enquiry.html">Enquiry</a>
-
-                <a href="contact.html" aria-current="page">Contact</a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                    <li>
+                        <a href="contact.html" aria-current="page">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
 
             </nav>
 
@@ -64,7 +72,7 @@
 
     <section class="page-banner">
 
-        <div class="page-banner-content">
+        <div class="page-content">
 
             <h1>Contact Kofi Coffee Shop</h1>
 
@@ -80,7 +88,7 @@
 
     <!-- ================= MAIN CONTENT ================= -->
 
-    <main>
+    <main id="main-content">
 
         <!-- ================= CONTACT INFORMATION ================= -->
 
@@ -167,7 +175,6 @@
                 </p>
 
                 <div class="locations-grid">
-
 
                     <!-- PRETORIA LOCATION -->
 
@@ -258,14 +265,25 @@
                     can assist you.
                 </p>
 
-                <form id="contactForm">
+                <!-- AJAX-enabled Formspree Contact Form -->
+
+                <form id="contactForm"
+                      action="https://formspree.io/f/xgaadgqe"
+                      method="POST">
+
+                    <!-- Email Subject -->
+
+                    <input type="hidden"
+                           name="_subject"
+                           value="New Kofi Coffee Shop Contact Message">
+
 
                     <!-- Full Name -->
 
                     <div class="form-group">
 
                         <label for="contactName">
-                            Full Name
+                            Full Name: *
                         </label>
 
                         <input
@@ -273,6 +291,9 @@
                             id="contactName"
                             name="name"
                             placeholder="Enter your full name"
+                            minlength="2"
+                            maxlength="80"
+                            autocomplete="name"
                             required>
 
                     </div>
@@ -283,7 +304,7 @@
                     <div class="form-group">
 
                         <label for="contactEmail">
-                            Email Address
+                            Email Address: *
                         </label>
 
                         <input
@@ -291,6 +312,8 @@
                             id="contactEmail"
                             name="email"
                             placeholder="Enter your email address"
+                            maxlength="254"
+                            autocomplete="email"
                             required>
 
                     </div>
@@ -301,14 +324,15 @@
                     <div class="form-group">
 
                         <label for="contactPhone">
-                            Phone Number
+                            Phone Number:
                         </label>
 
                         <input
                             type="tel"
                             id="contactPhone"
                             name="phone"
-                            placeholder="Enter your phone number">
+                            placeholder="Enter your phone number"
+                            autocomplete="tel">
 
                     </div>
 
@@ -318,7 +342,7 @@
                     <div class="form-group">
 
                         <label for="contactType">
-                            Enquiry Type
+                            Enquiry Type: *
                         </label>
 
                         <select
@@ -364,7 +388,7 @@
                     <div class="form-group">
 
                         <label for="contactSubject">
-                            Subject
+                            Subject: *
                         </label>
 
                         <input
@@ -372,6 +396,8 @@
                             id="contactSubject"
                             name="subject"
                             placeholder="Enter the subject"
+                            minlength="3"
+                            maxlength="100"
                             required>
 
                     </div>
@@ -382,30 +408,66 @@
                     <div class="form-group">
 
                         <label for="contactMessage">
-                            Your Message
+                            Your Message: *
                         </label>
 
                         <textarea
                             id="contactMessage"
                             name="message"
                             rows="6"
+                            minlength="10"
+                            maxlength="1000"
                             placeholder="Write your message here..."
                             required></textarea>
+
+                        <small>
+                            Enter between 10 and 1,000 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Formspree Spam Prevention -->
+
+                    <div class="honeypot" aria-hidden="true">
+
+                        <label for="contactGotcha">
+                            Leave this field empty
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contactGotcha"
+                            name="_gotcha"
+                            tabindex="-1"
+                            autocomplete="off">
 
                     </div>
 
 
                     <!-- Submit Button -->
 
-                    <button type="submit" class="submit-button">
-                        Send Message
-                    </button>
+                    <div class="form-buttons">
 
-                    <p
+                        <button type="submit" class="submit-button">
+                            Send Message
+                        </button>
+
+                        <button type="reset" class="btn">
+                            Clear Form
+                        </button>
+
+                    </div>
+
+
+                    <!-- AJAX Response Messages -->
+
+                    <div
                         id="contactResponse"
                         class="form-response"
+                        role="status"
                         aria-live="polite">
-                    </p>
+                    </div>
 
                 </form>
 
@@ -423,7 +485,6 @@
         <div class="footer-container">
 
             <div class="footer-content">
-
 
                 <!-- Footer Brand -->
 
@@ -464,9 +525,19 @@
 
                     <h3>Contact Information</h3>
 
-                    <p>Email: hello@kofi.co.za</p>
+                    <p>
+                        Email:
+                        <a href="mailto:hello@kofi.co.za">
+                            hello@kofi.co.za
+                        </a>
+                    </p>
 
-                    <p>Phone: +27 12 345 6789</p>
+                    <p>
+                        Phone:
+                        <a href="tel:+27123456789">
+                            +27 12 345 6789
+                        </a>
+                    </p>
 
                 </div>
 
@@ -479,7 +550,7 @@
 
                 <p>
                     &copy;
-                    <span id="contactCopyrightYear">2026</span>
+                    <span id="copyrightYear"></span>
                     Kofi Coffee Shop. All rights reserved.
                 </p>
 

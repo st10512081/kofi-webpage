@@ -2006,3 +2006,234 @@ select:-webkit-autofill {
     }
 }
 
+/* =========================================
+   FIX PRODUCT BOX AND ADD TO CART BUTTONS
+========================================= */
+
+/* Keep all product boxes consistent */
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Make product details fill the available space */
+.menu-item .product-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+/* Keep product descriptions neatly aligned */
+.menu-item .product-details p:not(.product-price) {
+    line-height: 1.6;
+    margin: 0 0 12px;
+}
+
+/* Push prices and buttons towards the bottom */
+.menu-item .product-details .product-price {
+    margin-top: auto;
+    padding-top: 12px;
+    margin-bottom: 0;
+}
+
+/* Align Add to Cart buttons perfectly */
+.menu-item .product-details .btn {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 15px 0 0;
+    padding: 13px 15px;
+    min-height: 46px;
+    border: none;
+    border-radius: 8px;
+    background: #FF6A00;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Button hover effect */
+.menu-item .product-details .btn:hover {
+    background: #0647FF;
+    transform: translateY(-2px);
+}
+
+/* Disabled button */
+.menu-item .product-details .btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Keep product images the same height */
+.menu-item img {
+    display: block;
+    width: 100%;
+    height: 185px;
+    object-fit: cover;
+}
+
+/* Mobile adjustment */
+@media (max-width: 550px) {
+    .menu-item .product-details {
+        padding: 16px;
+    }
+
+    .menu-item .product-details .btn {
+        min-height: 48px;
+        margin-top: 12px;
+    }
+
+    .menu-item img {
+        height: 210px;
+    }
+}
+
+/* =========================================
+   LOGO POSITION AND ALIGNMENT
+========================================= */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 45px;
+    min-height: 90px;
+    box-sizing: border-box;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.site-logo {
+    display: block;
+    width: 75px;
+    height: 65px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 8px;
+}
+
+
+
+/* =========================================
+   KOFI STEAMING MUG LOGO
+========================================= */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 8px;
+    margin-left: 15px;
+}
+
+.logo-container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-logo {
+    display: block;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 3px solid #FF6A00;
+    box-shadow: 0 0 12px rgba(255, 106, 0, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(255, 106, 0, 0.6);
+}
+
+/* Mobile logo */
+@media (max-width: 800px) {
+    .logo-container {
+        margin: 0 auto;
+    }
+
+    .site-logo {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* =====================================================
+   FORM VALIDATION AND AJAX FEEDBACK
+===================================================== */
+
+.form-feedback {
+    margin: 12px 0;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.success-message {
+    background: #e6f7e9;
+    color: #176b2c;
+    border: 1px solid #9bd5a6;
+}
+
+.error-message {
+    background: #ffe8e8;
+    color: #a40000;
+    border: 1px solid #e5a1a1;
+}
+
+.info-message {
+    background: #e8efff;
+    color: #0647FF;
+    border: 1px solid #a9bdff;
+}
+
+.field-error {
+    display: block;
+    margin-top: 5px;
+    color: #d00000;
+    font-size: 13px;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+    border: 2px solid #d00000;
+    outline: none;
+}
+
+button:disabled,
+input[type="submit"]:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
