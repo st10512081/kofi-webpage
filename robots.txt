@@ -8,4 +8,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-# Add your sitemap URL after publishing the website
+# XML Sitemap location
+Sitemap: https://st10512081.github.io/kofi-webpage/sitemap.xml

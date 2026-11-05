@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,78 +6,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO information -->
+    <!-- ================= SEO INFORMATION ================= -->
+
     <title>Kofi Coffee Shop | Fresh Coffee, Drinks and Snacks</title>
 
-    <meta name="description" content="Welcome to Kofi Coffee Shop. Enjoy freshly brewed coffee, handcrafted drinks, delicious snacks and a friendly atmosphere.">
+    <meta name="description"
+        content="Welcome to Kofi Coffee Shop. Explore our coffee, handcrafted drinks and delicious snacks. Discover our menu and enjoy the Kofi Coffee Shop experience.">
 
-    <meta name="keywords" content="Kofi Coffee Shop, fresh coffee, cappuccino, espresso, snacks, , coffee shop">
+    <meta name="keywords"
+        content="Kofi Coffee Shop, fresh coffee, cappuccino, espresso, coffee shop, snacks, iced coffee, matcha, croissants">
 
-    <meta name="author" content="Marobola Thabang">
+    <meta name="author" content="Kofi Coffee Shop">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#4b2e20">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!-- Social media information -->
-    <meta property="og:title" content="Kofi Coffee Shop | Good Coffee. Good Mood.">
-    <meta property="og:description" content="Enjoy freshly brewed coffee, handcrafted drinks and delicious snacks at Kofi Coffee Shop.">
+    <!-- CANONICAL URL -->
+
+    <link rel="canonical"
+        href="https://st10512081.github.io/kofi-webpage/">
+
+    <!-- ================= OPEN GRAPH SOCIAL MEDIA ================= -->
+
+    <meta property="og:title"
+        content="Kofi Coffee Shop | Good Coffee. Good Mood.">
+
+    <meta property="og:description"
+        content="Enjoy freshly brewed coffee, handcrafted drinks and delicious snacks at Kofi Coffee Shop. Explore our products and discover our story.">
+
     <meta property="og:type" content="website">
-    <meta property="og:image" content="images/kofi-logo.png">
 
-    <!-- CSS and JavaScript -->
+    <meta property="og:url"
+        content="https://st10512081.github.io/kofi-webpage/">
+
+    <meta property="og:site_name" content="Kofi Coffee Shop">
+
+    <meta property="og:image"
+        content="https://st10512081.github.io/kofi-webpage/images/snapiv.png">
+
+    <meta property="og:image:alt"
+        content="Freshly prepared coffee at Kofi Coffee Shop">
+
+    <!-- ================= TWITTER / X SOCIAL MEDIA ================= -->
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="Kofi Coffee Shop | Good Coffee. Good Mood.">
+
+    <meta name="twitter:description"
+        content="Discover fresh coffee, refreshing drinks and delicious snacks at Kofi Coffee Shop.">
+
+    <meta name="twitter:image"
+        content="https://st10512081.github.io/kofi-webpage/images/snapiv.png">
+
+    <!-- ================= FAVICON ================= -->
+
+    <link rel="icon" type="image/jpeg" href="images/logog.jpg">
+
+    <!-- ================= CSS ================= -->
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script src="script.js" defer></script>
+
 </head>
 
 <body>
 
-    
+    <!-- ================= WEBSITE HEADER ================= -->
 
-    <!-- Website header -->
     <header class="site-header">
 
         <div class="header-container">
 
-            <!-- Kofi logo at the top right -->
-            <a href="index.html" class="logo-link">
-                <img src="images/logog.jpg"
-                     alt="Kofi Coffee Shop logo"
-                     class="site-logo">
+            <!-- KOFI LOGO -->
+
+            <a href="index.html"
+               class="logo-link"
+               aria-label="Kofi Coffee Shop homepage">
+
+                <img
+                    src="images/logog.jpg"
+                    alt="Kofi Coffee Shop logo"
+                    class="site-logo"
+                    decoding="async">
+
             </a>
 
-            <!-- horizontal navigation on the left -->
+            <!-- MAIN NAVIGATION -->
+
             <nav class="main-navigation" aria-label="Main navigation">
 
-              <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                <ul>
+
                     <li>
-                        <a href="products.html" aria-current="page">
-                         Products
+                        <a href="index.html" aria-current="page">
+                            Home
                         </a>
                     </li>
-                    <li><a href="enquiry.html">Enquiries</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="products.html">
+                            Products
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="enquiry.html">
+                            Enquiries
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
                 </ul>
+
             </nav>
 
         </div>
 
     </header>
 
-    <!-- Main website content -->
+    <!-- ================= MAIN WEBSITE CONTENT ================= -->
+
     <main id="main-content">
 
-        <!-- Hero section -->
+        <!-- ================= HERO SECTION ================= -->
+
         <section class="hero-section">
 
             <div class="hero-content">
 
-                    <p class="hero-subtitle">Welcome to Kofi Coffee Shop</p>
+                <p class="hero-subtitle">
+                    Welcome to Kofi Coffee Shop
+                </p>
 
-                           <h1>Good Coffee. Good Mood.</h1>
+                <h1>
+                    Good Coffee. Good Mood.
+                </h1>
 
                 <p>
-                             every cup is made with care.
+                    Every cup is made with care.
                 </p>
 
                 <div class="hero-buttons">
@@ -93,16 +176,22 @@
 
             </div>
 
+            <!-- HERO IMAGE -->
+
             <div class="hero-image">
 
-                <img src="images/snapiv.png"
-                     alt="Freshly prepared coffee at Kofi Coffee Shop">
+                <img
+                    src="images/snapiv.png"
+                    alt="Freshly prepared coffee at Kofi Coffee Shop"
+                    fetchpriority="high"
+                    decoding="async">
 
             </div>
 
         </section>
 
-        <!-- Welcome section -->
+        <!-- ================= WELCOME SECTION ================= -->
+
         <section class="welcome-section content-section">
 
             <h2>Welcome to Kofi</h2>
@@ -126,7 +215,8 @@
 
         </section>
 
-        <!-- Customer favourite products -->
+        <!-- ================= CUSTOMER FAVOURITE PRODUCTS ================= -->
+
         <section class="featured-section content-section">
 
             <h2>Our Customer Favourites</h2>
@@ -138,10 +228,15 @@
 
             <div class="featured-products">
 
+                <!-- ESPRESSO -->
+
                 <article class="featured-card">
 
-                    <img src="images/espresso.jpg"
-                         alt="Freshly brewed espresso coffee">
+                    <img
+                        src="images/espresso.jpg"
+                        alt="Freshly brewed espresso coffee"
+                        loading="lazy"
+                        decoding="async">
 
                     <h3>Espresso</h3>
 
@@ -152,10 +247,15 @@
 
                 </article>
 
+                <!-- CAPPUCCINO -->
+
                 <article class="featured-card">
 
-                    <img src="images/cappuccino.jpg"
-                         alt="Creamy cappuccino with milk foam">
+                    <img
+                        src="images/cappuccino.jpg"
+                        alt="Creamy cappuccino with milk foam"
+                        loading="lazy"
+                        decoding="async">
 
                     <h3>Cappuccino</h3>
 
@@ -166,10 +266,15 @@
 
                 </article>
 
+                <!-- CROISSANT -->
+
                 <article class="featured-card">
 
-                    <img src="images/croissant.jpg"
-                         alt="Fresh golden croissant pastry">
+                    <img
+                        src="images/Croissant.jpg"
+                        alt="Fresh golden croissant pastry"
+                        loading="lazy"
+                        decoding="async">
 
                     <h3>Fresh Croissant</h3>
 
@@ -188,12 +293,15 @@
 
         </section>
 
-        <!-- Why choose Kofi -->
+        <!-- ================= WHY CHOOSE KOFI ================= -->
+
         <section class="why-kofi-section content-section">
 
             <h2>Why Choose Kofi?</h2>
 
             <div class="benefits-grid">
+
+                <!-- QUALITY COFFEE -->
 
                 <article class="content-card">
 
@@ -206,6 +314,8 @@
 
                 </article>
 
+                <!-- FRESH SNACKS -->
+
                 <article class="content-card">
 
                     <h3>Fresh Snacks</h3>
@@ -216,6 +326,8 @@
                     </p>
 
                 </article>
+
+                <!-- FRIENDLY ATMOSPHERE -->
 
                 <article class="content-card">
 
@@ -232,7 +344,8 @@
 
         </section>
 
-        <!-- Call to action -->
+        <!-- ================= CALL TO ACTION ================= -->
+
         <section class="cta-section">
 
             <h2>Your Next Coffee Break Starts Here</h2>
@@ -252,7 +365,8 @@
 
         </section>
 
-        <!-- Visit information -->
+        <!-- ================= VISIT INFORMATION ================= -->
+
         <section class="visit-section content-section">
 
             <h2>Visit Kofi Coffee Shop</h2>
@@ -269,12 +383,18 @@
 
             <p>
                 <strong>Phone:</strong>
-                +27 12 345 6789
+
+                <a href="tel:+27123456789">
+                    +27 12 345 6789
+                </a>
             </p>
 
             <p>
                 <strong>Email:</strong>
-                hello@kofi.co.za
+
+                <a href="mailto:hello@kofi.co.za">
+                    hello@kofi.co.za
+                </a>
             </p>
 
             <p>
@@ -290,15 +410,19 @@
 
     </main>
 
-    <!-- Website footer -->
+    <!-- ================= WEBSITE FOOTER ================= -->
+
     <footer class="site-footer">
 
         <p>
-            &copy; <span id="homeCopyrightYear">2026</span>
+            &copy;
+            <span id="copyrightYear"></span>
             Kofi Coffee Shop. All rights reserved.
         </p>
 
-        <p>Good Coffee. Good Mood.</p>
+        <p>
+            Good Coffee. Good Mood.
+        </p>
 
     </footer>
 
