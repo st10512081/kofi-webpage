@@ -1,0 +1,12 @@
+
+# Kofi Coffee Shop - Search Engine Crawling Instructions
+
+User-agent: *
+Allow: /
+
+# Do not crawl unnecessary system or private folders
+Disallow: /admin/
+Disallow: /private/
+
+# XML Sitemap location
+Sitemap: https://st10512081.github.io/kofi-webpage/sitemap.xml
