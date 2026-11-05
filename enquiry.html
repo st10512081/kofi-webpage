@@ -6,57 +6,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- PAGE TITLE AND SEO -->
     <title>Make an Enquiry | Kofi Coffee Shop</title>
 
     <meta name="description"
-        content="Make an enquiry at Kofi Coffee Shop about our coffee, menu, catering, special orders and services. We would love to assist you.">
+        content="Make an enquiry at Kofi Coffee Shop about our coffee, menu, catering, special orders and services. Contact our team and we would love to assist you.">
 
     <meta name="keywords"
-        content="Kofi Coffee Shop enquiries, coffee shop catering, coffee orders, menu enquiries">
+        content="Kofi Coffee Shop enquiries, coffee shop catering, coffee orders, menu enquiries, special orders, coffee shop South Africa">
 
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Marobola Thabang">
+    <meta name="author" content="Kofi Coffee Shop">
     <meta name="theme-color" content="#4b2e24">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <meta property="og:title" content="Make an Enquiry | Kofi Coffee Shop">
+    <!-- CANONICAL URL -->
+    <link rel="canonical"
+        href="https://st10512081.github.io/kofi-webpage/enquiry.html">
+
+    <!-- OPEN GRAPH SOCIAL MEDIA METADATA -->
+    <meta property="og:title"
+        content="Make an Enquiry | Kofi Coffee Shop">
+
     <meta property="og:description"
-        content="Contact Kofi Coffee Shop about our products, catering, special orders and services.">
+        content="Contact Kofi Coffee Shop about our coffee, menu, catering, special orders and services.">
+
     <meta property="og:type" content="website">
 
+    <meta property="og:url"
+        content="https://st10512081.github.io/kofi-webpage/enquiry.html">
+
+    <meta property="og:site_name" content="Kofi Coffee Shop">
+
+    <meta property="og:image"
+        content="https://st10512081.github.io/kofi-webpage/images/snapiv.jpg">
+
+    <meta property="og:image:alt"
+        content="Coffee and refreshments from Kofi Coffee Shop">
+
+    <!-- TWITTER / X SOCIAL MEDIA METADATA -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="Make an Enquiry | Kofi Coffee Shop">
+
+    <meta name="twitter:description"
+        content="Send Kofi Coffee Shop an enquiry about products, catering and special orders.">
+
+    <meta name="twitter:image"
+        content="https://st10512081.github.io/kofi-webpage/images/snapiv.jpg">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/jpeg" href="images/logog.jpg">
+
+    <!-- STYLESHEET -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- JAVASCRIPT -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-   
-    
+    <!-- ================= WEBSITE HEADER ================= -->
 
-    <!-- Website Header -->
     <header class="site-header">
 
         <div class="header-container">
 
-            <!-- Kofi Logo: top-left corner -->
+            <!-- KOFI LOGO -->
             <a href="index.html" class="logo-link">
-                <img src="images/logog.jpg"
-                     alt="Kofi Coffee Shop logo"
-                     class="site-logo">
+
+                <img
+                    src="images/logog.jpg"
+                    alt="Kofi Coffee Shop logo"
+                    class="site-logo"
+                    decoding="async">
+
             </a>
 
-            <!-- Main Navigation -->
+            <!-- MAIN NAVIGATION -->
             <nav class="main-navigation" aria-label="Main navigation">
-<ul>
+
+                <ul>
+
                     <li><a href="index.html">Home</a></li>
+
                     <li><a href="about.html">About</a></li>
+
+                    <li><a href="products.html">Products</a></li>
+
                     <li>
-                        <a href="products.html" aria-current="page">
-                            Our Menu
+                        <a href="enquiry.html" aria-current="page">
+                            Enquiries
                         </a>
                     </li>
-                    <li><a href="enquiry.html">Enquiries</a></li>
+
                     <li><a href="contact.html">Contact</a></li>
+
                 </ul>
+
             </nav>
 
         </div>
@@ -65,13 +114,27 @@
 
     <main id="main-content">
 
+        <!-- ================= PAGE BANNER ================= -->
+
         <section class="page-banner">
+
             <div class="page-content">
+
                 <h1>Make an Enquiry</h1>
-               
+
+                <p>
+                    Have a question or special request?
+                    We would love to hear from you.
+                </p>
+
+            </div>
+
         </section>
 
+        <!-- ================= ENQUIRY INFORMATION ================= -->
+
         <section class="content-section">
+
             <div class="page-content">
 
                 <h2>How Can We Help You?</h2>
@@ -86,35 +149,53 @@
 
                 <div class="benefits-grid">
 
+                    <!-- MENU ENQUIRIES -->
+
                     <article class="content-card">
+
                         <h3>Menu Enquiries</h3>
+
                         <p>
                             Ask us about our coffee, drinks, snacks
                             and available products.
                         </p>
+
                     </article>
 
+                    <!-- CATERING SERVICES -->
+
                     <article class="content-card">
+
                         <h3>Catering Services</h3>
+
                         <p>
                             Contact us about coffee and food arrangements
                             for your events and gatherings.
                         </p>
+
                     </article>
 
+                    <!-- SPECIAL REQUESTS -->
+
                     <article class="content-card">
+
                         <h3>Special Requests</h3>
+
                         <p>
                             Tell us about special orders, feedback,
                             sponsorship or volunteering opportunities.
                         </p>
+
                     </article>
 
                 </div>
+
             </div>
+
         </section>
 
-        <!-- Enquiry Form -->
+        <!-- ================= ENQUIRY FORM ================= -->
+
         <section class="content-section form-section">
 
             <div class="page-content">
@@ -126,112 +207,249 @@
                     understand your request and prepare a relevant response.
                 </p>
 
-                <p>Fields marked with an asterisk (*) are compulsory.</p>
+                <p>
+                    Fields marked with an asterisk (*) are compulsory.
+                </p>
 
-                <form id="enquiryForm">
+                <!-- AJAX-ENABLED FORMSPREE ENQUIRY FORM -->
+
+                <form
+                    id="enquiryForm"
+                    action="https://formspree.io/f/xgaadgqe"
+                    method="POST">
+
+                    <!-- EMAIL SUBJECT -->
+
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="New Kofi Coffee Shop Enquiry">
+
+                    <!-- CONTACT DETAILS -->
 
                     <fieldset>
+
                         <legend>Your Contact Details</legend>
 
-                        <div class="form-group">
-                            <label for="name">Full Name: *</label>
-                            <input type="text" id="name" name="name"
-                                placeholder="Enter your full name"
-                                minlength="2" maxlength="80"
-                                autocomplete="name" required>
-                        </div>
+                        <!-- FULL NAME -->
 
                         <div class="form-group">
-                            <label for="email">Email Address: *</label>
-                            <input type="email" id="email" name="email"
+
+                            <label for="name">
+                                Full Name: *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                minlength="2"
+                                maxlength="80"
+                                autocomplete="name"
+                                required>
+
+                        </div>
+
+                        <!-- EMAIL ADDRESS -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address: *
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
                                 placeholder="example@email.com"
                                 maxlength="254"
-                                autocomplete="email" required>
+                                autocomplete="email"
+                                required>
+
                         </div>
 
+                        <!-- PHONE NUMBER -->
+
                         <div class="form-group">
-                            <label for="phone">Phone Number:</label>
-                            <input type="tel" id="phone" name="phone"
+
+                            <label for="phone">
+                                Phone Number:
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
                                 placeholder="0821234567 or +27821234567"
-                                pattern="(0[0-9]{9}|[+]27[0-9]{9})"
-                                title="Enter a valid South African number."
-                                autocomplete="tel">
-                            <small>
-                                Optional. Enter a valid South African phone number.
+                                pattern="(0[0-9]{9}|\+27[0-9]{9})"
+                                title="Enter a valid South African number, for example 0821234567 or +27821234567."
+                                autocomplete="tel"
+                                aria-describedby="phoneHelp">
+
+                            <small id="phoneHelp">
+                                Optional. Enter a valid South African
+                                phone number.
                             </small>
+
                         </div>
+
                     </fieldset>
 
+                    <!-- ENQUIRY DETAILS -->
+
                     <fieldset>
+
                         <legend>Enquiry Details</legend>
 
-                        <div class="form-group">
-                            <label for="enquiryType">Enquiry Type: *</label>
-                            <select id="enquiryType" name="enquiryType" required>
-                                <option value="">-- Select an option --</option>
-                                <option value="menu">Menu / Product Enquiry</option>
-                                <option value="catering">Catering Services</option>
-                                <option value="special-order">Special Order</option>
-                                <option value="feedback">Customer Feedback</option>
-                                <option value="volunteering">Volunteering</option>
-                                <option value="sponsorship">Sponsorship</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+                        <!-- ENQUIRY TYPE -->
 
                         <div class="form-group">
-                            <label for="preferredDate">Preferred Date:</label>
-                            <input type="date" id="preferredDate"
+
+                            <label for="enquiryType">
+                                Enquiry Type: *
+                            </label>
+
+                            <select
+                                id="enquiryType"
+                                name="enquiryType"
+                                required>
+
+                                <option value="">
+                                    -- Select an option --
+                                </option>
+
+                                <option value="Menu / Product Enquiry">
+                                    Menu / Product Enquiry
+                                </option>
+
+                                <option value="Catering Services">
+                                    Catering Services
+                                </option>
+
+                                <option value="Special Order">
+                                    Special Order
+                                </option>
+
+                                <option value="Customer Feedback">
+                                    Customer Feedback
+                                </option>
+
+                                <option value="Volunteering">
+                                    Volunteering
+                                </option>
+
+                                <option value="Sponsorship">
+                                    Sponsorship
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- PREFERRED DATE -->
+
+                        <div class="form-group">
+
+                            <label for="preferredDate">
+                                Preferred Date:
+                            </label>
+
+                            <input
+                                type="date"
+                                id="preferredDate"
                                 name="preferredDate"
                                 aria-describedby="dateHelp">
+
                             <small id="dateHelp">
-                                Optional. Select your preferred date for catering
-                                or a special order.
+                                Optional. Select your preferred date
+                                for catering or a special order.
                             </small>
+
                         </div>
 
+                        <!-- ENQUIRY MESSAGE -->
+
                         <div class="form-group">
-                            <label for="message">Your Enquiry: *</label>
-                            <textarea id="message" name="message"
-                                rows="7" minlength="10" maxlength="1000"
+
+                            <label for="message">
+                                Your Enquiry: *
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="7"
+                                minlength="10"
+                                maxlength="1000"
                                 placeholder="Please explain your enquiry in detail..."
                                 aria-describedby="messageHelp"
                                 required></textarea>
+
                             <small id="messageHelp">
                                 Enter between 10 and 1,000 characters.
                             </small>
+
                         </div>
+
                     </fieldset>
 
-                    <!-- Spam Prevention -->
+                    <!-- FORMSPREE SPAM PREVENTION -->
+
                     <div class="honeypot" aria-hidden="true">
-                        <label for="website">Leave this field empty</label>
-                        <input type="text" id="website" name="website"
-                            tabindex="-1" autocomplete="off">
+
+                        <label for="enquiryGotcha">
+                            Leave this field empty
+                        </label>
+
+                        <input
+                            type="text"
+                            id="enquiryGotcha"
+                            name="_gotcha"
+                            tabindex="-1"
+                            autocomplete="off">
+
                     </div>
 
+                    <!-- FORM BUTTONS -->
+
                     <div class="form-buttons">
+
                         <button type="submit" class="btn">
                             Submit Enquiry
                         </button>
+
                         <button type="reset" class="btn">
                             Clear Form
                         </button>
+
                     </div>
 
-                    <div id="enquiryResponse"
+                    <!-- AJAX RESPONSE MESSAGES -->
+
+                    <div
+                        id="enquiryResponse"
                         class="form-response"
                         role="status"
-                        aria-live="polite">
+                        aria-live="polite"
+                        tabindex="-1">
                     </div>
 
                 </form>
 
             </div>
+
         </section>
 
-        <!-- Additional Information -->
+        <!-- ================= ADDITIONAL INFORMATION ================= -->
+
         <section class="content-section">
+
             <div class="page-content">
 
                 <h2>Explore More at Kofi</h2>
@@ -243,59 +461,82 @@
 
                 <div class="benefits-grid">
 
+                    <!-- MENU LINK -->
+
                     <article class="content-card">
+
                         <h3>Explore Our Menu</h3>
+
                         <p>
                             Discover our coffee, refreshing drinks
                             and delicious snacks.
                         </p>
+
                         <a href="products.html" class="text-link">
-                            View Our Products
+                            View Our Menu
                         </a>
+
                     </article>
 
+                    <!-- CONTACT LINK -->
+
                     <article class="content-card">
+
                         <h3>Contact Our Team</h3>
+
                         <p>
                             Visit our contact page for our contact
                             information and general messages.
                         </p>
+
                         <a href="contact.html" class="text-link">
                             Contact Kofi
                         </a>
+
                     </article>
 
                 </div>
+
             </div>
+
         </section>
 
     </main>
 
-    <!-- Website Footer -->
+    <!-- ================= WEBSITE FOOTER ================= -->
+
     <footer class="site-footer">
+
         <div class="page-content">
 
             <h2>Kofi Coffee Shop</h2>
+
             <p>Good Coffee. Good Mood.</p>
 
             <p>
                 Email:
-                <a href="mailto:hello@kofi.co.za">hello@kofi.co.za</a>
+                <a href="mailto:hello@kofi.co.za">
+                    hello@kofi.co.za
+                </a>
             </p>
 
             <p>
                 Phone:
-                <a href="tel:+27123456789">+27 12 345 6789</a>
+                <a href="tel:+27123456789">
+                    +27 12 345 6789
+                </a>
             </p>
 
             <p>
                 &copy;
-                <span id="enquiryCopyrightYear"></span>
+                <span id="copyrightYear"></span>
                 Kofi Coffee Shop. All rights reserved.
             </p>
 
         </div>
+
     </footer>
 
 </body>
+
 </html>
